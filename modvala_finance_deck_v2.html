@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ModVala — Investor & Finance Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050507;--s1:#0d0d12;--s2:#13131a;--s3:#1a1a24;
+  --b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.1);--b3:rgba(255,255,255,0.18);
+  --t1:#f2f0ec;--t2:#9998a0;--t3:#55545e;
+  --lime:#c8f135;--lime2:rgba(200,241,53,0.08);
+  --blue:#5b9cf6;--blue2:rgba(91,156,246,0.08);
+  --green:#4ade80;--green2:rgba(74,222,128,0.08);
+  --pink:#f472b6;--pink2:rgba(244,114,182,0.08);
+  --amber:#fbbf24;--amber2:rgba(251,191,36,0.08);
+  --purple:#a78bfa;--purple2:rgba(167,139,250,0.08);
+  --teal:#2dd4bf;--teal2:rgba(45,212,191,0.08);
+  --coral:#fb7185;--coral2:rgba(251,113,133,0.08);
+  --sky:#38bdf8;--sky2:rgba(56,189,248,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.6}
+.page{max-width:1100px;margin:0 auto;padding:56px 32px 100px;position:relative;z-index:1}
+.header{margin-bottom:56px}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--lime);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.header-eyebrow::before{content:'';width:24px;height:1px;background:var(--lime)}
+h1{font-size:42px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;color:var(--t1)}
+h1 em{color:var(--lime);font-style:normal}
+.header-sub{font-size:15px;color:var(--t2);margin-top:12px;max-width:560px;font-weight:300}
+.header-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--lime);color:#050507;border:none;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:0.02em;transition:all 0.2s}
+.btn-primary:hover{background:#d4f255;transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:transparent;color:var(--t2);border:0.5px solid var(--b2);border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:13px;cursor:pointer;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--b3);color:var(--t1)}
+.stats{display:flex;gap:2px;margin-bottom:48px;background:var(--s2);border-radius:12px;border:0.5px solid var(--b1);overflow:hidden;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;padding:16px 20px;border-right:0.5px solid var(--b1)}
+.stat:last-child{border-right:none}
+.stat-num{font-size:24px;font-weight:700;color:var(--lime);letter-spacing:-0.5px;font-family:'JetBrains Mono',monospace}
+.stat-label{font-size:11px;color:var(--t3);margin-top:2px;letter-spacing:0.04em}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:40px}
+.leg{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;border:0.5px solid var(--b1);font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;background:var(--s1)}
+.leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.flow{display:flex;flex-direction:column;gap:4px}
+.layer{border-radius:16px;border:0.5px solid var(--b1);overflow:visible;position:relative;transition:border-color 0.2s}
+.layer:hover{border-color:var(--b2)}
+.layer-header{padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--b1)}
+.layer-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--t3)}
+.layer-title{font-size:12px;font-weight:600;letter-spacing:0.06em;display:flex;align-items:center;gap:8px}
+.layer-body{padding:16px}
+.nodes-grid{display:grid;gap:8px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-1{grid-template-columns:1fr}
+@media(max-width:700px){.grid-3,.grid-4,.grid-2{grid-template-columns:1fr}}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+.node{border-radius:10px;border:0.5px solid var(--b1);padding:14px 16px;cursor:pointer;transition:all 0.18s;position:relative;overflow:hidden;background:var(--s2)}
+.node::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.2s;border-radius:10px}
+.node:hover{transform:translateY(-2px);border-color:var(--b2)}
+.node:hover::before{opacity:1}
+.node.active{border-width:1px}
+.node-icon{font-size:18px;margin-bottom:8px;display:block}
+.node-name{font-size:13px;font-weight:600;color:var(--t1);line-height:1.3}
+.node-desc{font-size:11px;color:var(--t3);margin-top:4px;line-height:1.5;font-weight:300}
+.node-tag{margin-top:8px;display:flex;flex-wrap:wrap;gap:3px}
+.ntag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.04);color:var(--t3);border:0.5px solid var(--b1)}
+.node-caret{position:absolute;top:12px;right:12px;font-size:11px;color:var(--t3);transition:all 0.2s}
+.node:hover .node-caret{color:var(--t2)}
+.node.active .node-caret{transform:rotate(90deg)}
+.c-blue .node-icon,.c-blue .node-name{color:var(--blue)}
+.c-blue:hover,.c-blue.active{border-color:var(--blue);background:var(--blue2)}
+.c-blue::before{background:var(--blue2)}
+.c-green .node-icon,.c-green .node-name{color:var(--green)}
+.c-green:hover,.c-green.active{border-color:var(--green);background:var(--green2)}
+.c-green::before{background:var(--green2)}
+.c-pink .node-icon,.c-pink .node-name{color:var(--pink)}
+.c-pink:hover,.c-pink.active{border-color:var(--pink);background:var(--pink2)}
+.c-pink::before{background:var(--pink2)}
+.c-amber .node-icon,.c-amber .node-name{color:var(--amber)}
+.c-amber:hover,.c-amber.active{border-color:var(--amber);background:var(--amber2)}
+.c-amber::before{background:var(--amber2)}
+.c-purple .node-icon,.c-purple .node-name{color:var(--purple)}
+.c-purple:hover,.c-purple.active{border-color:var(--purple);background:var(--purple2)}
+.c-purple::before{background:var(--purple2)}
+.c-teal .node-icon,.c-teal .node-name{color:var(--teal)}
+.c-teal:hover,.c-teal.active{border-color:var(--teal);background:var(--teal2)}
+.c-teal::before{background:var(--teal2)}
+.c-coral .node-icon,.c-coral .node-name{color:var(--coral)}
+.c-coral:hover,.c-coral.active{border-color:var(--coral);background:var(--coral2)}
+.c-coral::before{background:var(--coral2)}
+.c-lime .node-icon,.c-lime .node-name{color:var(--lime)}
+.c-lime:hover,.c-lime.active{border-color:var(--lime);background:var(--lime2)}
+.c-lime::before{background:var(--lime2)}
+.c-sky .node-icon,.c-sky .node-name{color:var(--sky)}
+.c-sky:hover,.c-sky.active{border-color:var(--sky);background:var(--sky2)}
+.c-sky::before{background:var(--sky2)}
+.lh-blue{background:var(--blue2);border-bottom-color:rgba(91,156,246,0.12)}.lh-blue .layer-title{color:var(--blue)}
+.lh-green{background:var(--green2);border-bottom-color:rgba(74,222,128,0.12)}.lh-green .layer-title{color:var(--green)}
+.lh-pink{background:var(--pink2);border-bottom-color:rgba(244,114,182,0.12)}.lh-pink .layer-title{color:var(--pink)}
+.lh-amber{background:var(--amber2);border-bottom-color:rgba(251,191,36,0.12)}.lh-amber .layer-title{color:var(--amber)}
+.lh-purple{background:var(--purple2);border-bottom-color:rgba(167,139,250,0.12)}.lh-purple .layer-title{color:var(--purple)}
+.lh-teal{background:var(--teal2);border-bottom-color:rgba(45,212,191,0.12)}.lh-teal .layer-title{color:var(--teal)}
+.lh-coral{background:var(--coral2);border-bottom-color:rgba(251,113,133,0.12)}.lh-coral .layer-title{color:var(--coral)}
+.lh-lime{background:var(--lime2);border-bottom-color:rgba(200,241,53,0.12)}.lh-lime .layer-title{color:var(--lime)}
+.lh-sky{background:var(--sky2);border-bottom-color:rgba(56,189,248,0.12)}.lh-sky .layer-title{color:var(--sky)}
+.connector{display:flex;align-items:center;padding:6px 24px;gap:12px}
+.conn-line{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,var(--b2),transparent)}
+.conn-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em;white-space:nowrap}
+.conn-arrow{color:var(--t3);font-size:14px}
+.drawer{display:none;margin-top:8px;background:var(--s1);border:0.5px solid var(--b2);border-radius:12px;overflow:hidden}
+.drawer.open{display:block;animation:slideDown 0.2s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.drawer-top{padding:20px 24px 16px;border-bottom:0.5px solid var(--b1);display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.drawer-title{font-size:17px;font-weight:700;color:var(--t1);letter-spacing:-0.3px}
+.drawer-close{background:var(--s3);border:0.5px solid var(--b1);color:var(--t3);border-radius:6px;padding:5px 12px;font-size:11px;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all 0.15s;flex-shrink:0}
+.drawer-close:hover{color:var(--t1);border-color:var(--b2)}
+.drawer-body{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:600px){.drawer-body{grid-template-columns:1fr}}
+.dl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--t3);margin-bottom:5px}
+.dv{font-size:13px;color:var(--t2);line-height:1.6;font-weight:300}
+.dsec{padding:0 24px 20px}
+.dsec-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--t3);margin-bottom:10px;margin-top:16px;border-top:0.5px solid var(--b1);padding-top:14px}
+/* Plan blocks */
+.plan-month{margin-bottom:4px}
+.plan-month-head{font-size:12px;font-weight:600;color:var(--t1);margin-bottom:8px;padding:8px 12px;background:var(--s3);border-radius:8px;border:0.5px solid var(--b1)}
+.week-block{margin-bottom:10px;padding:0 0 0 12px;border-left:2px solid var(--b2)}
+.week-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--lime);letter-spacing:0.08em;margin-bottom:6px}
+.plan-tasks{display:flex;flex-direction:column;gap:4px}
+.plan-task{font-size:12px;color:var(--t2);display:flex;gap:8px;align-items:flex-start;padding:3px 0}
+.plan-task::before{content:'›';color:var(--lime);flex-shrink:0;font-size:12px}
+/* Tech cost table */
+.tech-table{width:100%;border-collapse:collapse;margin-top:4px}
+.tech-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--t3);padding:8px 12px;border-bottom:0.5px solid var(--b2);text-align:left;background:var(--s3)}
+.tech-table td{font-size:12px;color:var(--t2);padding:9px 12px;border-bottom:0.5px solid rgba(255,255,255,0.03)}
+.tech-table tr:last-child td{border-bottom:none}
+.tech-table .total-row td{color:var(--t1);font-weight:600;border-top:0.5px solid var(--b2);background:rgba(200,241,53,0.05)}
+.tech-table .free-row td{color:var(--green)}
+.num{font-family:'JetBrains Mono',monospace}
+.badge-green{display:inline-flex;align-items:center;padding:1px 7px;border-radius:999px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(74,222,128,0.12);color:var(--green);border:0.5px solid rgba(74,222,128,0.25)}
+.badge-amber{display:inline-flex;align-items:center;padding:1px 7px;border-radius:999px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(251,191,36,0.12);color:var(--amber);border:0.5px solid rgba(251,191,36,0.25)}
+.badge-blue{display:inline-flex;align-items:center;padding:1px 7px;border-radius:999px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(91,156,246,0.12);color:var(--blue);border:0.5px solid rgba(91,156,246,0.25)}
+.note-box{background:rgba(91,156,246,0.04);border:0.5px solid rgba(91,156,246,0.15);border-radius:8px;padding:10px 14px;margin-top:8px;margin-bottom:4px}
+.note-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--blue);letter-spacing:0.08em;margin-bottom:4px}
+.note-text{font-size:12px;color:var(--t2);line-height:1.5}
+.warn-box{background:rgba(251,191,36,0.04);border:0.5px solid rgba(251,191,36,0.2);border-radius:8px;padding:10px 14px;margin-top:8px}
+.warn-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--amber);letter-spacing:0.08em;margin-bottom:4px}
+.chart-bar-wrap{display:flex;align-items:center;gap:10px;margin:3px 0}
+.chart-bar-label{font-size:11px;color:var(--t3);min-width:60px;font-family:'JetBrains Mono',monospace}
+.chart-bar-bg{flex:1;height:8px;background:var(--s3);border-radius:999px;overflow:hidden}
+.chart-bar-fill{height:100%;border-radius:999px}
+.chart-bar-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t1);min-width:80px;text-align:right}
+
+/* Mobile financer view */
+.summary-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin:0 0 44px}
+.summary-card{border:0.5px solid var(--b1);border-radius:16px;background:linear-gradient(135deg,rgba(200,241,53,.09),rgba(56,189,248,.045));padding:18px}
+.summary-card h2{font-size:18px;line-height:1.2;margin-bottom:8px}
+.summary-card p{color:var(--t2);font-size:13px}
+.mini-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.mini-metric{border:0.5px solid var(--b1);border-radius:12px;background:var(--s1);padding:12px}
+.mini-metric strong{display:block;color:var(--lime);font-family:'JetBrains Mono',monospace;font-size:17px}
+.mini-metric span{display:block;color:var(--t3);font-size:10px;letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+.table-scroll table{min-width:860px}
+@media(max-width:760px){
+  body{font-size:13px}
+  .page{padding:28px 14px 72px;max-width:100%}
+  .header{margin-bottom:28px}
+  .header-eyebrow{font-size:9px;letter-spacing:.09em;line-height:1.4}
+  h1{font-size:34px;letter-spacing:-.8px}
+  .header-sub{font-size:13px;max-width:none}
+  .header-actions{position:sticky;bottom:10px;z-index:10;background:rgba(5,5,7,.86);backdrop-filter:blur(14px);padding:8px;border:0.5px solid var(--b1);border-radius:14px}
+  .btn-primary,.btn-secondary{flex:1;justify-content:center;padding:11px 10px;font-size:12px}
+  .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-bottom:26px}
+  .stat{min-width:0;border-right:none;padding:13px 12px}
+  .stat-num{font-size:20px;white-space:normal;word-break:break-word}
+  .stat-label{font-size:9px}
+  .summary-strip{grid-template-columns:1fr;margin-bottom:28px}
+  .mini-metrics{grid-template-columns:repeat(2,1fr)}
+  .legend{display:none}
+  .layer{border-radius:14px;margin-bottom:8px}
+  .layer-header{padding:12px 14px;align-items:flex-start;gap:8px}
+  .layer-title{font-size:11px;line-height:1.35;text-align:right}
+  .layer-body{padding:12px}
+  .nodes-grid{gap:8px}
+  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
+  .node{padding:13px 14px}
+  .node-name{font-size:13px}
+  .node-desc{font-size:11px}
+  .connector{padding:10px 4px}
+  .conn-label{font-size:8px;white-space:normal;text-align:center}
+  .drawer-top{padding:16px 14px}
+  .drawer-title{font-size:15px}
+  .drawer-body{padding:16px 14px;grid-template-columns:1fr;gap:14px}
+  .dsec{padding:0 14px 16px}
+  .tech-table th,.tech-table td{padding:8px 10px;font-size:11px;white-space:nowrap}
+  .note-box,.warn-box{padding:10px 12px}
+}
+
+@media print{
+  body{background:#fff;color:#111}
+  :root{--bg:#fff;--s1:#f7f7f7;--s2:#f0f0f0;--s3:#e8e8e8;--b1:rgba(0,0,0,0.08);--b2:rgba(0,0,0,0.14);--t1:#111;--t2:#555;--t3:#888}
+  .btn-primary,.btn-secondary{display:none}
+  .drawer{display:block!important;border-color:#ccc}
+  .drawer-close{display:none}
+  .node{break-inside:avoid}.layer{break-inside:avoid}
+  body::before{display:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-eyebrow">INVESTOR & FINANCE DECK · 6-MONTH PLAN</div>
+  <h1>Mod<em>Vala</em><br>Business Blueprint</h1>
+  <p class="header-sub">A mobile-ready financier briefing for ModVala: exact 6-month capital use, month-by-month revenue assumptions, monetization upside, and operating controls. Built to open cleanly on WhatsApp, email, desktop, and phone browser.</p>
+  <div class="header-actions">
+    <button class="btn-primary" onclick="window.print()">⬇ Export PDF</button>
+    <button class="btn-secondary" onclick="expandAll()">Expand All</button>
+    <button class="btn-secondary" onclick="collapseAll()">Collapse All</button>
+  </div>
+</div>
+
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">&#8377;96L</div><div class="stat-label">TOTAL 6-MONTH CAPITAL ASK</div></div>
+  <div class="stat"><div class="stat-num">&#8377;16L</div><div class="stat-label">PLANNED MONTHLY DEPLOYMENT</div></div>
+  <div class="stat"><div class="stat-num">&#8377;23.7L</div><div class="stat-label">M6 BASE-CASE REVENUE POTENTIAL</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">MONETIZATION CHANNELS</div></div>
+  <div class="stat"><div class="stat-num">&#8377;2,100</div><div class="stat-label">SUPABASE PRO BASE / MONTH @ &#8377;84/USD</div></div>
+  <div class="stat"><div class="stat-num">&#8377;0</div><div class="stat-label">FIREBASE CRASHLYTICS + ANALYTICS</div></div>
+</div>
+
+<div class="summary-strip">
+  <div class="summary-card">
+    <h2>Funding logic: &#8377;96L buys 6 months of focused market capture.</h2>
+    <p>Capital is deployed into team, marketing, sales, events, legal, tech, and contingency. The plan targets Month 6 revenue above monthly burn, with runway protection if monetization ramps slower than expected.</p>
+  </div>
+  <div class="mini-metrics">
+    <div class="mini-metric"><strong>&#8377;47.30L</strong><span>6-month revenue potential</span></div>
+    <div class="mini-metric"><strong>&#8377;48.70L</strong><span>net capital consumed</span></div>
+    <div class="mini-metric"><strong>M6</strong><span>break-even month target</span></div>
+    <div class="mini-metric"><strong>M8-M9</strong><span>conservative break-even</span></div>
+  </div>
+</div>
+
+  <div class="stat"><div class="stat-num">₹16L</div><div class="stat-label">EST. MONTHLY BURN</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">TEAM HEADCOUNT</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">REVENUE STREAMS</div></div>
+  <div class="stat"><div class="stat-num">$25 = 2500INR</div><div class="stat-label">SUPABASE PRO/MONTH (BASE)</div></div>
+  <div class="stat"><div class="stat-num">FREE</div><div class="stat-label">FIREBASE CRASHLYTICS</div></div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:var(--lime)"></div>leadership</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--pink)"></div>marketing</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div>sales</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--purple)"></div>creative</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--teal)"></div>legal & hr</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--coral)"></div>admin & infra</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--green)"></div>revenue</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--sky)"></div>technology</div>
+</div>
+
+<div class="flow">
+
+<!-- L01 VISION -->
+<div class="layer">
+  <div class="layer-header lh-lime">
+    <span class="layer-num">01</span>
+    <span class="layer-title">🚀 Company Vision & Market Opportunity</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-3">
+      <div class="node c-lime" onclick="tog('vision',this)"><span class="node-icon">🎯</span><div class="node-name">Vision</div><div class="node-desc">India's #1 automotive lifestyle & community platform</div><div class="node-tag"><span class="ntag">2026–2030</span></div><span class="node-caret">›</span></div>
+      <div class="node c-lime" onclick="tog('mission',this)"><span class="node-icon">⚡</span><div class="node-name">Mission</div><div class="node-desc">Connect car & bike enthusiasts, monetise passion at scale</div><div class="node-tag"><span class="ntag">day 1</span></div><span class="node-caret">›</span></div>
+      <div class="node c-lime" onclick="tog('market',this)"><span class="node-icon">📊</span><div class="node-name">Market Opportunity</div><div class="node-desc">180M+ vehicles in India · ₹3.5 Trillion aftermarket</div><div class="node-tag"><span class="ntag">TAM · SAM · SOM</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div id="d-vision" class="drawer"></div>
+    <div id="d-mission" class="drawer"></div>
+    <div id="d-market" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">LEADERSHIP STRUCTURE</div><div class="conn-line"></div></div>
+
+<!-- L02 LEADERSHIP -->
+<div class="layer">
+  <div class="layer-header lh-lime">
+    <span class="layer-num">02</span>
+    <span class="layer-title">👑 Leadership — Founder & Co-Founder</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-2">
+      <div class="node c-lime" onclick="tog('ceo',this)"><span class="node-icon">🏁</span><div class="node-name">Founder / CEO</div><div class="node-desc">Strategy · product roadmap · investor relations · final P&L authority</div><div class="node-tag"><span class="ntag">35% equity</span><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-blue" onclick="tog('cfo',this)"><span class="node-icon">💼</span><div class="node-name">Co-Founder / CFO (Financer)</div><div class="node-desc">Finance · legal oversight · HR governance · admin authority · fund disbursement</div><div class="node-tag"><span class="ntag">35% equity</span><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div id="d-ceo" class="drawer"></div>
+    <div id="d-cfo" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">DEPARTMENTAL STRUCTURE</div><div class="conn-line"></div></div>
+
+<!-- L03 MARKETING -->
+<div class="layer">
+  <div class="layer-header lh-pink">
+    <span class="layer-num">03</span>
+    <span class="layer-title">📢 Marketing & Sales — Reports to CEO</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-3">
+      <div class="node c-pink" onclick="tog('mkthead',this)"><span class="node-icon">📣</span><div class="node-name">Marketing & Sales Head</div><div class="node-desc">Brand strategy · influencer partnerships · events · KPI reporting to CEO</div><div class="node-tag"><span class="ntag">₹1L–1.3L/mo</span><span class="ntag">Hybrid</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+      <div class="node c-purple" onclick="tog('editor',this)"><span class="node-icon">🎨</span><div class="node-name">Editor & Designer — Social Media</div><div class="node-desc">Reels · posts · brand assets · content calendar — reports to Mkt Head</div><div class="node-tag"><span class="ntag">₹80k–1L/mo</span><span class="ntag">WFH</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+     </div>
+	  <div style="margin-top:8px"><div class="nodes-grid grid-3">
+	  <div class="node c-amber" onclick="tog('sales1',this)"><span class="node-icon">🤝</span><div class="node-name">Sales Head — Mumbai</div><div class="node-desc">B2B partnerships · garages · aftermarket brands — Mumbai territory</div><div class="node-tag"><span class="ntag">₹90k + ₹20k incentive</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+      <div class="node c-amber" onclick="tog('sales1',this)"><span class="node-icon">🤝</span><div class="node-name">Sales Executive — Mumbai</div><div class="node-desc">B2B partnerships · garages · aftermarket brands — Mumbai territory</div><div class="node-tag"><span class="ntag">₹35k + ₹10k incentive</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>		
+      <div style="grid-column:3/4">
+      <div class="node c-amber" onclick="tog('sales2',this)"><span class="node-icon">🤝</span><div class="node-name">Sales Executive — Ahmedabad</div><div class="node-desc">B2B partnerships · garages · aftermarket brands — Ahmedabad territory</div><div class="node-tag"><span class="ntag">₹35k + ₹10k incentive</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+      </div>
+    </div></div>
+    <div id="d-mkthead" class="drawer"></div>
+    <div id="d-editor" class="drawer"></div>
+    <div id="d-sales1" class="drawer"></div>
+    <div id="d-sales2" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">OPERATIONS</div><div class="conn-line"></div></div>
+
+<!-- L04 LEGAL/ADMIN -->
+<div class="layer">
+  <div class="layer-header lh-teal">
+    <span class="layer-num">04</span>
+    <span class="layer-title">⚖️ Legal, HR & Admin — Reports to Co-Founder/CFO</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-2">
+      <div class="node c-teal" onclick="tog('legal',this)"><span class="node-icon">📋</span><div class="node-name">Legal & HR Manager</div><div class="node-desc">Contracts · compliance · hiring · appointment annexures · payroll support</div><div class="node-tag"><span class="ntag">₹80k–1L/mo</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+      <div class="node c-coral" onclick="tog('admin',this)"><span class="node-icon">🏢</span><div class="node-name">Admin & Infrastructure</div><div class="node-desc">Office ops · vendor management · IT hardware · travel — reports to Legal HR</div><div class="node-tag"><span class="ntag">₹50k/mo</span><span class="ntag">1% @ 6mo</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div id="d-legal" class="drawer"></div>
+    <div id="d-admin" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">EQUITY & SHARES</div><div class="conn-line"></div></div>
+
+<!-- L05 EQUITY -->
+<div class="layer">
+  <div class="layer-header lh-blue">
+    <span class="layer-num">05</span>
+    <span class="layer-title">📈 Equity, Shares & Profit Distribution</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-3">
+      <div class="node c-lime" onclick="tog('equity',this)"><span class="node-icon">🥇</span><div class="node-name">Equity Structure</div><div class="node-desc">Founder 35% · Co-Founder 35% · Each Employee 1% (post 6mo) · Fundraise 20% · Reserve ~4%</div><div class="node-tag"><span class="ntag">100% split</span></div><span class="node-caret">›</span></div>
+      <div class="node c-green" onclick="tog('profit',this)"><span class="node-icon">💰</span><div class="node-name">Profit Distribution</div><div class="node-desc">Reinvestment vs payout logic · break-even path · dividend policy</div><div class="node-tag"><span class="ntag">post Month 6</span></div><span class="node-caret">›</span></div>
+      <div class="node c-blue" onclick="tog('annexure',this)"><span class="node-icon">📝</span><div class="node-name">Appointment Annexure Clause</div><div class="node-desc">1% equity vests only after 6 months of successful employment</div><div class="node-tag"><span class="ntag">cliff vest</span><span class="ntag">HR-legal</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div id="d-equity" class="drawer"></div>
+    <div id="d-profit" class="drawer"></div>
+    <div id="d-annexure" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">6-MONTH FUNDING ASK</div><div class="conn-line"></div></div>
+
+<!-- L06 FINANCE -->
+<div class="layer">
+  <div class="layer-header lh-amber">
+    <span class="layer-num">06</span>
+    <span class="layer-title">💵 6-Month Funding Ask — Total ₹96 Lakhs</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-3">
+      <div class="node c-amber" onclick="tog('salaries',this)"><span class="node-icon">👥</span><div class="node-name">Salaries — 6 Months</div><div class="node-desc">Total payroll across all 6 employees for 6 months including incentives</div><div class="node-tag"><span class="ntag">₹35.5L est.</span></div><span class="node-caret">›</span></div>
+      <div class="node c-pink" onclick="tog('mktspend',this)"><span class="node-icon">📲</span><div class="node-name">Marketing Spend</div><div class="node-desc">Influencers · events · travel vloggers · paid social ads · PR — 6 months</div><div class="node-tag"><span class="ntag">₹18L est.</span></div><span class="node-caret">›</span></div>
+      <div class="node c-coral" onclick="tog('opex',this)"><span class="node-icon">🏗️</span><div class="node-name">Office & OpEx</div><div class="node-desc">Rent · internet · tools · subscriptions · travel · misc — 6 months</div><div class="node-tag"><span class="ntag">₹10L est.</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-3">
+      <div class="node c-teal" onclick="tog('legal_spend',this)"><span class="node-icon">⚖️</span><div class="node-name">Legal & Compliance</div><div class="node-desc">Incorporation · contracts · DPIIT · trademark · ROC filings</div><div class="node-tag"><span class="ntag">₹2L est.</span></div><span class="node-caret">›</span></div>
+      <div class="node c-sky" onclick="tog('techcost',this)"><span class="node-icon">☁️</span><div class="node-name">Tech Infrastructure Costs</div><div class="node-desc">Supabase Pro · Firebase Crashlytics · RevenueCat · Play Store · tools — 6 months</div><div class="node-tag"><span class="ntag">₹1.5L est.</span><span class="ntag">month-by-month</span></div><span class="node-caret">›</span></div>
+      <div class="node c-lime" onclick="tog('contingency',this)"><span class="node-icon">🛡️</span><div class="node-name">Contingency Buffer</div><div class="node-desc">~10% reserve for unknowns — event overruns, emergency tech, delays</div><div class="node-tag"><span class="ntag">₹9L est.</span></div><span class="node-caret">›</span></div>
+    </div></div>
+    <div id="d-salaries" class="drawer"></div>
+    <div id="d-mktspend" class="drawer"></div>
+    <div id="d-opex" class="drawer"></div>
+    <div id="d-legal_spend" class="drawer"></div>
+    <div id="d-techcost" class="drawer"></div>
+    <div id="d-contingency" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">REVENUE MODEL</div><div class="conn-line"></div></div>
+
+
+<!-- L07 REVENUE -->
+<div class="layer">
+  <div class="layer-header lh-green">
+    <span class="layer-num">07</span>
+    <span class="layer-title">&#128184; How ModVala Earns &mdash; 10 Monetization Channels</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-4">
+      <div class="node c-green" onclick="tog('subs',this)"><span class="node-icon">&#11088;</span><div class="node-name">Pro Subscriptions</div><div class="node-desc">Monthly + annual Pro plan with higher-value trip/community tools</div><div class="node-tag"><span class="ntag">&#8377;99-199/mo</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('b2bads',this)"><span class="node-icon">&#128230;</span><div class="node-name">B2B Ads & Listings</div><div class="node-desc">Garages, detailers, tyre shops, accessory brands, insurance partners</div><div class="node-tag"><span class="ntag">&#8377;15k-75k/package</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('sponsors',this)"><span class="node-icon">&#127950;</span><div class="node-name">OEM & Brand Sponsorships</div><div class="node-desc">Sponsored campaigns, city events, launch activations, branded features</div><div class="node-tag"><span class="ntag">&#8377;2L-10L/deal</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('events',this)"><span class="node-icon">&#127914;</span><div class="node-name">Events & Meetups</div><div class="node-desc">Ticketing, stalls, sponsors, food partner commission, merchandise</div><div class="node-tag"><span class="ntag">&#8377;15k-5L/event</span></div><span class="node-caret">&rsaquo;</span></div>
+    </div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-3">
+      <div class="node c-green" onclick="tog('trips',this)"><span class="node-icon">&#128506;</span><div class="node-name">Trips & Convoys</div><div class="node-desc">Paid curated trips, gang trip upgrades, hotel/fuel/gear sponsors</div><div class="node-tag"><span class="ntag">&#8377;1L+ net/trip</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('marketplace',this)"><span class="node-icon">&#128722;</span><div class="node-name">Marketplace Commission</div><div class="node-desc">Accessories, mods, detailing, tyre/audio leads routed to partners</div><div class="node-tag"><span class="ntag">5-12% take-rate</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('garage_saas',this)"><span class="node-icon">&#129520;</span><div class="node-name">Garage SaaS / CRM</div><div class="node-desc">Paid dashboard for garages to manage leads, offers, and bookings</div><div class="node-tag"><span class="ntag">&#8377;999-2,999/mo</span></div><span class="node-caret">&rsaquo;</span></div>
+    </div></div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-3">
+      <div class="node c-green" onclick="tog('affiliate',this)"><span class="node-icon">&#127974;</span><div class="node-name">Finance + Insurance Leads</div><div class="node-desc">Loan, insurance, warranty, FASTag, roadside assistance referrals</div><div class="node-tag"><span class="ntag">&#8377;200-2k/lead</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('influence',this)"><span class="node-icon">&#128248;</span><div class="node-name">Creator Campaigns</div><div class="node-desc">Managed influencer promotions with 20-30% ModVala commission</div><div class="node-tag"><span class="ntag">agency margin</span></div><span class="node-caret">&rsaquo;</span></div>
+      <div class="node c-green" onclick="tog('revmodel',this)"><span class="node-icon">&#128200;</span><div class="node-name">P&L Projection</div><div class="node-desc">Exact month-by-month projection with totals auto-calculated</div><div class="node-tag"><span class="ntag">M6 &#8377;23.7L</span></div><span class="node-caret">&rsaquo;</span></div>
+    </div></div>
+    <div id="d-subs" class="drawer"></div>
+    <div id="d-b2bads" class="drawer"></div>
+    <div id="d-sponsors" class="drawer"></div>
+    <div id="d-events" class="drawer"></div>
+    <div id="d-trips" class="drawer"></div>
+    <div id="d-marketplace" class="drawer"></div>
+    <div id="d-garage_saas" class="drawer"></div>
+    <div id="d-affiliate" class="drawer"></div>
+    <div id="d-influence" class="drawer"></div>
+    <div id="d-revmodel" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">TECHNOLOGY INFRASTRUCTURE</div><div class="conn-line"></div></div>
+
+<!-- L08 TECH INFRA -->
+<div class="layer">
+  <div class="layer-header lh-sky">
+    <span class="layer-num">08</span>
+    <span class="layer-title">☁️ Technology Stack & Infrastructure Costs — Month by Month</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-4">
+      <div class="node c-sky" onclick="tog('sb_overview',this)"><span class="node-icon">🗄️</span><div class="node-name">Supabase — Overview</div><div class="node-desc">Auth · PostgreSQL DB · Storage · Realtime · Edge Functions</div><div class="node-tag"><span class="ntag">Pro $25/mo base</span></div><span class="node-caret">›</span></div>
+      <div class="node c-sky" onclick="tog('sb_storage',this)"><span class="node-icon">📁</span><div class="node-name">Supabase Storage Deep Dive</div><div class="node-desc">Car photos · community posts · trip media · bandwidth estimates per user tier</div><div class="node-tag"><span class="ntag">$0.021/GB overage</span></div><span class="node-caret">›</span></div>
+      <div class="node c-sky" onclick="tog('sb_auth',this)"><span class="node-icon">🔐</span><div class="node-name">Supabase Auth & MAU Cost</div><div class="node-desc">Monthly active user pricing · 100K MAU included in Pro · overage rates</div><div class="node-tag"><span class="ntag">$0.00325/MAU over 100K</span></div><span class="node-caret">›</span></div>
+      <div class="node c-sky" onclick="tog('sb_monthly',this)"><span class="node-icon">📅</span><div class="node-name">Supabase Monthly Cost Forecast</div><div class="node-desc">Month-by-month cost projection as users grow from 500 → 50,000+</div><div class="node-tag"><span class="ntag">M1→M6 breakdown</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-3">
+      <div class="node c-teal" onclick="tog('firebase',this)"><span class="node-icon">🔥</span><div class="node-name">Firebase — Crashlytics & Analytics</div><div class="node-desc">Crash reporting · performance monitoring · analytics — fully free, unlimited usage</div><div class="node-tag"><span class="ntag">₹0 — always free</span></div><span class="node-caret">›</span></div>
+      <div class="node c-purple" onclick="tog('revenuecat_cost',this)"><span class="node-icon">💳</span><div class="node-name">RevenueCat — Subscription Management</div><div class="node-desc">Billing · receipt validation · entitlement management — pricing by MTR</div><div class="node-tag"><span class="ntag">free up to $2.5k MTR</span></div><span class="node-caret">›</span></div>
+      <div class="node c-amber" onclick="tog('playstore',this)"><span class="node-icon">📱</span><div class="node-name">Play Store & Other Services</div><div class="node-desc">Google Play fee · dev tools · domain · email · CDN · total tech stack cost</div><div class="node-tag"><span class="ntag">$25 one-time + 15–30%</span></div><span class="node-caret">›</span></div>
+    </div></div>
+    <div id="d-sb_overview" class="drawer"></div>
+    <div id="d-sb_storage" class="drawer"></div>
+    <div id="d-sb_auth" class="drawer"></div>
+    <div id="d-sb_monthly" class="drawer"></div>
+    <div id="d-firebase" class="drawer"></div>
+    <div id="d-revenuecat_cost" class="drawer"></div>
+    <div id="d-playstore" class="drawer"></div>
+  </div>
+</div>
+
+<div class="connector"><div class="conn-line"></div><div class="conn-arrow">↓</div><div class="conn-label">INDIVIDUAL 6-MONTH EXECUTION PLANS</div><div class="conn-line"></div></div>
+
+<!-- L09 PLANS -->
+<div class="layer">
+  <div class="layer-header lh-purple">
+    <span class="layer-num">09</span>
+    <span class="layer-title">🗓️ Individual 6-Month Plans — Click Each Team Member</span>
+  </div>
+  <div class="layer-body">
+    <div class="nodes-grid grid-4">
+      <div class="node c-lime" onclick="tog('plan_ceo',this)"><span class="node-icon">🏁</span><div class="node-name">CEO — 6-Month Plan</div><div class="node-desc">Strategy · investor relations · audits · product oversight · weekly cadence</div><div class="node-tag"><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-blue" onclick="tog('plan_cfo',this)"><span class="node-icon">💼</span><div class="node-name">CFO — 6-Month Plan</div><div class="node-desc">Finance audits · disbursement · legal reviews · monthly P&L cadence</div><div class="node-tag"><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-pink" onclick="tog('plan_mkt',this)"><span class="node-icon">📣</span><div class="node-name">Marketing Head — 6-Month Plan</div><div class="node-desc">Brand strategy · influencer outreach · events · KPI targets month by month</div><div class="node-tag"><span class="ntag">Hybrid · 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-purple" onclick="tog('plan_edit',this)"><span class="node-icon">🎨</span><div class="node-name">Editor & Designer — 6-Month Plan</div><div class="node-desc">Content calendar · Reels · posts · brand assets · weekly deliverables</div><div class="node-tag"><span class="ntag">WFH · 11am–8pm</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-3">
+      <div class="node c-amber" onclick="tog('plan_sales1',this)"><span class="node-icon">🤝</span><div class="node-name">Sales Exec Mumbai — 6-Month Plan</div><div class="node-desc">Lead targets · deal pipeline · territory coverage · monthly milestones</div><div class="node-tag"><span class="ntag">Mumbai · 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-amber" onclick="tog('plan_sales2',this)"><span class="node-icon">🤝</span><div class="node-name">Sales Exec Ahmedabad — 6-Month Plan</div><div class="node-desc">Lead targets · deal pipeline · territory coverage · monthly milestones</div><div class="node-tag"><span class="ntag">Ahmedabad · 11am–8pm</span></div><span class="node-caret">›</span></div>
+      <div class="node c-teal" onclick="tog('plan_legal',this)"><span class="node-icon">📋</span><div class="node-name">Legal & HR — 6-Month Plan</div><div class="node-desc">Compliance filings · hiring docs · payroll cycles · equity vest process</div><div class="node-tag"><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+    </div>
+    <div style="margin-top:8px"><div class="nodes-grid grid-1">
+      <div class="node c-coral" onclick="tog('plan_admin',this)"><span class="node-icon">🏢</span><div class="node-name">Admin & Infrastructure — 6-Month Plan</div><div class="node-desc">Office setup · vendor management · IT assets · day-to-day operations</div><div class="node-tag"><span class="ntag">Mon–Fri 11am–8pm</span></div><span class="node-caret">›</span></div>
+    </div></div>
+    </div>
+    <div id="d-plan_ceo" class="drawer"></div>
+    <div id="d-plan_cfo" class="drawer"></div>
+    <div id="d-plan_mkt" class="drawer"></div>
+    <div id="d-plan_edit" class="drawer"></div>
+    <div id="d-plan_sales1" class="drawer"></div>
+    <div id="d-plan_sales2" class="drawer"></div>
+    <div id="d-plan_legal" class="drawer"></div>
+    <div id="d-plan_admin" class="drawer"></div>
+  </div>
+</div>
+
+</div><!-- /flow -->
+</div><!-- /page -->
+
+<script>
+const D = {
+
+vision:{t:'Vision — ModVala',fields:[
+  {l:'STATEMENT',v:'India\'s #1 platform for car and bike enthusiasts — where passion meets community, data, and commerce.'},
+  {l:'5-YEAR HORIZON',v:'10M+ registered users across 25 Indian cities. Recognised brand at auto expos. Preferred platform for OEM launches targeting the youth demographic.'},
+  {l:'DIFFERENTIATOR',v:'No other app combines vehicle logging, community, trip tracking, aftermarket product discovery, and events in one place — built mobile-first for India with offline-first architecture.'},
+  {l:'EXIT POTENTIAL',v:'Acquisition target for OEMs (Tata, Mahindra, TVS), media groups, or a structured Series A → Series B → IPO path over 7–10 years.'}
+]},
+
+mission:{t:'Mission — 6-Month Objectives',fields:[
+  {l:'PRODUCT MISSION',v:'Ship a rock-solid Flutter app with zero critical bugs, voice logging, GPS trips, community feed, and Pro subscription active before Month 2.'},
+  {l:'GROWTH MISSION',v:'Reach 10,000 active users by Month 3 and 50,000 by Month 6 through events, influencer campaigns, and organic community growth.'},
+  {l:'REVENUE MISSION',v:'Hit ₹2L/month recurring revenue by Month 4 through subscriptions and first brand partnerships. Reach &#8377;18-24L/month by Month 6 across subscriptions, B2B, sponsorships, events, trips, marketplace leads, and garage SaaS.'},
+  {l:'COMMUNITY MISSION',v:'Build the most engaged automotive community in India — measured by posts per user, daily active usage, event attendance, and brand NPS.'}
+]},
+
+market:{t:'Market Opportunity',fields:[
+  {l:'TAM — TOTAL ADDRESSABLE MARKET',v:'180M+ registered vehicles in India. ₹3.5 Trillion aftermarket industry (ACMA 2024 data). 40M+ social media users who actively engage with automotive content.'},
+  {l:'SAM — SERVICEABLE MARKET',v:'Car and bike enthusiasts, modifiers, and premium vehicle owners: approx. 15 million users. These users spend ₹50,000–₹5 Lakhs/year extra on their vehicles beyond standard maintenance.'},
+  {l:'SOM — 6-MONTH TARGET',v:'50,000 registered users. 5,000 Pro subscribers or annual-plan equivalent. &#8377;18-24L/month revenue potential by Month 6.'},
+  {l:'MARKET TREND',v:"India's luxury car sales up 42% YoY (2024). Automotive YouTube channels growing 3× faster than general content. No dominant community app exists for this segment — it is a wide-open space."}
+]},
+
+ceo:{t:'Founder / CEO — Responsibilities & 6-Month Role',fields:[
+  {l:'EQUITY',v:'35% founding equity. Full voting rights. Board seat.'},
+  {l:'REPORTING LINE',v:'Marketing Head, both Sales Executives report to CEO. Weekly joint review with CFO every Friday 6pm.'},
+  {l:'DAILY (11am–8pm)',v:'11am: All-team standup (15 min). 12pm: Product or partner work. 3pm: Sales pipeline review. 5pm: Brand/partnership calls. 7pm: Investor or internal updates.'},
+  {l:'WEEKLY',v:'Mon: Week kickoff + KPI review. Wed: 1:1 with Marketing Head. Fri: Full team standup + P&L review with CFO.'},
+  {l:'MONTHLY',v:'Full P&L audit with CFO. Investor update. OKR review per department. Hiring decisions. App analytics deep-dive (retention, DAU, churn).'},
+  {l:'6-MONTH MILESTONES',v:'M1: App live on Play Store. M2: First paid brand deal signed. M3: 10K users. M4: First sponsorship ≥₹1L. M5: 30K users. M6: &#8377;18L+ revenue potential, 50K users, first profitable month target, Series A prep begun.'}
+]},
+
+cfo:{t:'Co-Founder / CFO — Responsibilities & 6-Month Role',fields:[
+  {l:'EQUITY',v:'35% founding equity. Full voting rights. Joint board authority with CEO.'},
+  {l:'REPORTING LINE',v:'Legal & HR Manager, Admin & Infrastructure report directly to CFO.'},
+  {l:'DAILY (11am–8pm)',v:'11am: Standup. Review overnight expense receipts. Monitor bank balance. Flag any unbudgeted requests.'},
+  {l:'WEEKLY',v:'Mon: Review previous week expense report. Tue: Legal & HR check-in. Thu: Finance review — burn vs budget. Fri: Joint P&L review with CEO at 6pm (30 min standing meeting).'},
+  {l:'MONTHLY',v:'Full financial reconciliation. Salary disbursement (before 1st of each month). GST and compliance filings check. Equity ledger update. Financer progress report.'},
+  {l:'AUTHORITY',v:'CFO approves all expenses above ₹10,000. Any spend exceeding monthly budget by >10% requires CEO + CFO joint approval. All contracts and NDAs require CFO sign-off before execution.'}
+]},
+
+mkthead:{t:'Marketing & Sales Head — Role & KPIs',fields:[
+  {l:'SALARY',v:'₹1,00,000 – ₹1,30,000/month. Hybrid — minimum 3 office days per week.'},
+  {l:'EQUITY',v:'1% after completing 6 months successfully per Appointment Annexure.'},
+  {l:'REPORTS TO',v:'CEO. Weekly 1:1 every Wednesday.'},
+  {l:'MANAGES',v:'Editor/Designer (Social Media), Sales Exec Mumbai, Sales Exec Ahmedabad.'},
+  {l:'6-MONTH KPIs',v:'App downloads target: 50,000 by M6. Social following: 100,000 combined by M6. Brand deals closed: 3 by M4. Event attendance: 500+ per event by M4.'},
+  {l:'MARKETING BUDGET AUTHORITY',v:'₹1.5L/month pre-approved. Any single spend >₹50,000 requires CEO approval. All influencer contracts >₹25,000 require brief submitted to CEO before signing.'}
+]},
+
+editor:{t:'Editor & Designer — Social Media Role',fields:[
+  {l:'SALARY',v:'₹80,000 – ₹1,00,000/month. Work From Home. Must be available 11am–8pm Mon–Fri.'},
+  {l:'EQUITY',v:'1% after 6 months per Appointment Annexure.'},
+  {l:'REPORTS TO',v:'Marketing Head. Daily check-in required.'},
+  {l:'WEEKLY DELIVERABLES',v:'Minimum 5 Instagram posts, 3 Reels, 2 YouTube Shorts. Monthly: 1 long-form YouTube video. Monthly newsletter from Month 3 onwards.'},
+  {l:'TOOLS (COMPANY-PROVIDED)',v:'Canva Pro, Adobe Premiere Pro or CapCut Pro, Notion for content calendar, Meta Business Suite for scheduling.'},
+  {l:'CONTENT PILLARS',v:'App features & tutorials · User car showcases (UGC) · Car and bike tips · Events coverage · Behind-the-scenes of ModVala operations.'}
+]},
+
+sales1:{t:'Sales Executive — Mumbai',fields:[
+  {l:'SALARY',v:'₹80,000/month base. Incentive up to ₹20,000/month from Month 2 based on deals closed.'},
+  {l:'EQUITY',v:'1% after 6 months per Appointment Annexure.'},
+  {l:'TERRITORY',v:'Mumbai, Thane, Navi Mumbai, Pune day trips.'},
+  {l:'REPORTS TO',v:'Marketing Head. Daily deal pipeline update via shared CRM.'},
+  {l:'MONTHLY TARGETS',v:'M1: 10 qualified leads. M2: 2 deals closed. M3: 4 deals. M4–M6: 3+ deals/month + renewals of existing clients.'},
+  {l:'TARGET CLIENTS',v:'Aftermarket accessory shops, detailing studios, car clubs, tyre brands, automotive media, driving schools, fuel additive companies, dashcam and audio brands.'}
+]},
+
+sales2:{t:'Sales Executive — Ahmedabad',fields:[
+  {l:'SALARY',v:'₹80,000/month base. Incentive up to ₹20,000/month from Month 2 based on deals closed.'},
+  {l:'EQUITY',v:'1% after 6 months per Appointment Annexure.'},
+  {l:'TERRITORY',v:'Ahmedabad, Gandhinagar, Surat (day trips), Rajkot (quarterly).'},
+  {l:'REPORTS TO',v:'Marketing Head. Daily deal pipeline update via shared CRM.'},
+  {l:'MONTHLY TARGETS',v:'M1: 8 qualified leads. M2: 2 deals closed. M3: 3 deals. M4–M6: 3+ deals/month + renewals.'},
+  {l:'TARGET CLIENTS',v:'SG Highway auto accessory cluster, luxury detailing studios, car clubs, Sindhi Market auto belt. Ahmedabad has strong SUV and luxury car enthusiasm — strong target base for premium packages.'}
+]},
+
+legal:{t:'Legal & HR Manager — Role',fields:[
+  {l:'SALARY',v:'₹80,000 – ₹1,00,000/month. Office-based.'},
+  {l:'EQUITY',v:'1% after 6 months per Appointment Annexure.'},
+  {l:'REPORTS TO',v:'Co-Founder / CFO.'},
+  {l:'LEGAL RESPONSIBILITIES',v:'Draft all employment contracts and appointment annexures. NDAs and vendor agreements. DPIIT Startup India registration. Trademark filing for "ModVala." GST registration. Shop & Establishment Act compliance.'},
+  {l:'HR RESPONSIBILITIES',v:'Attendance tracking (11am–8pm). Leave management. Payroll inputs to CFO by 25th each month. Employee handbook. Hiring documentation for all new joiners. 6-month performance documentation for equity vest reviews.'},
+  {l:'COMPLIANCE CALENDAR',v:'Monthly TDS filing if applicable. Quarterly GST return. Annual ROC filing. DPIIT yearly renewal. Each item has a 2-week advance reminder in the compliance tracker.'}
+]},
+
+admin:{t:'Admin & Infrastructure — Role',fields:[
+  {l:'SALARY',v:'₹50,000/month. Office-based.'},
+  {l:'EQUITY',v:'1% after 6 months per Appointment Annexure.'},
+  {l:'REPORTS TO',v:'Legal & HR Manager. CFO approval for purchases >₹10,000.'},
+  {l:'MONTH 1 SETUP TASKS',v:'Confirm office lease. Order furniture and desks. Set up internet (Jio Business Fiber). Procure laptops if not already available. Set up Google Workspace (all @modvala.com email accounts).'},
+  {l:'ONGOING RESPONSIBILITIES',v:'Office consumables. Hardware asset register. Vendor management (internet, cleaning, pantry). Travel bookings for CEO and Sales team. Subscription renewal tracking.'},
+  {l:'MONTHLY',v:'Submit expense report to CFO by 5th of each month. Check all tool subscription renewal dates. Update asset register with any changes.'}
+]},
+
+equity:{t:'Equity Structure — ModVala',fields:[
+  {l:'FOUNDER / CEO',v:'35% — Full ownership rights. Voting majority.'},
+  {l:'CO-FOUNDER / CFO (FINANCER)',v:'35% — Full ownership rights. Voting majority.'},
+  {l:'EMPLOYEES — 6 STAFF',v:'1% per employee = 6% total. Vests only after 6 months of successful employment as defined in each Appointment Annexure.'},
+  {l:'FUNDRAISING POOL',v:'20% — Reserved for future external investors, Series A round, or strategic partnerships.'},
+  {l:'COMPANY RESERVE',v:'~4% — Reserved for future ESOP expansion, advisors, or company treasury needs.'},
+  {l:'TOTAL',v:'35 + 35 + 6 + 20 + 4 = 100%. Equity is not diluted for existing founders in the first fundraising round — new shares are issued from the 20% pool.'}
+]},
+
+profit:{t:'Profit Distribution Policy',fields:[
+  {l:'MONTHS 1–6 (INVESTMENT PHASE)',v:'100% of any profits reinvested into growth — product improvement, marketing acceleration, and team expansion. No personal dividend payouts during the funded 6-month sprint.'},
+  {l:'MONTH 7 ONWARDS',v:'Profit distribution to be formally agreed at the Month 6 board meeting. Proposed structure: 40% reinvested into business, 30% each to CEO and CFO as dividend, remainder to company reserve.'},
+  {l:'LOSS COVERAGE',v:'Monthly operating losses during Months 1–6 are covered from the raised ₹96L capital. This is planned and expected during the growth phase.'},
+  {l:'BREAK-EVEN TARGET',v:'Month 8–9. Revenue of ₹15–20L/month is required to cover operating costs. All projections show this is achievable based on the user and revenue growth trajectory.'}
+]},
+
+annexure:{t:'Appointment Annexure — Equity Clause',fields:[
+  {l:'PURPOSE',v:'Legally binds the 1% equity promise to 6 months of successful employment, protecting the company if an employee exits early.'},
+  {l:'VESTING CONDITION',v:'Employee must complete 6 consecutive months. Performance must be rated "meets expectations" or above as reviewed jointly by CEO and CFO. No gross misconduct or policy breach during the period.'},
+  {l:'VESTING DATE',v:'Day 1 of Month 7 from joining date. Example: joined 1 June → equity vests 1 December.'},
+  {l:'CLIFF VESTING',v:'This is a cliff vest structure — not gradual. Zero equity if the employee exits before the full 6 months, regardless of reason.'},
+  {l:'LEGAL PROCESS',v:'On vesting: Board Resolution drafted by Legal HR → Filed with ROC (Form SH-7 for Pvt Ltd) → Share certificate issued to employee → Shareholder register updated.'},
+  {l:'ANTI-DILUTION DISCLOSURE',v:"Employee's 1% is subject to proportional dilution in future funding rounds. This is disclosed in writing at the time of hiring and in the annexure document."}
+]},
+
+salaries:{t:'Salary Budget — 6 Months',isTable:true,
+  headers:['ROLE','MONTHLY (AVG)','× 6 MONTHS','NOTES'],
+  rows:[
+    ['Marketing & Sales Head','₹1,15,000','₹6,90,000','Mid-range of ₹1L–1.3L band'],
+    ['Editor & Designer (WFH)','₹90,000','₹5,40,000','Mid-range of ₹80k–1L band'],
+    ['Sales Exec Mumbai','₹80,000 base','₹4,80,000','Incentives separate'],
+    ['Sales Exec Ahmedabad','₹80,000 base','₹4,80,000','Incentives separate'],
+    ['Legal & HR Manager','₹90,000','₹5,40,000','Mid-range of ₹80k–1L band'],
+    ['Admin & Infrastructure','₹50,000','₹3,00,000','Fixed salary'],
+    ['Sales Incentives (both)','~₹10,000 avg/mo each','₹1,20,000','From Month 2, after first deals'],
+  ],
+  total:['TOTAL SALARY BUDGET (6 MONTHS)','','₹31,50,000 base + ₹1,20,000 incentives = ₹32,70,000','']
+},
+
+mktspend:{t:'Marketing Spend — 6 Months',isTable:true,
+  headers:['CATEGORY','PER MONTH','6-MONTH TOTAL','DESCRIPTION'],
+  rows:[
+    ['Influencer Collaborations','₹1,50,000','₹9,00,000','2 mid-tier + 4 micro per month. Mix of paid and barter.'],
+    ['Events & Meetups','₹75,000 per event','₹3,00,000','4 events over 6 months — 2 Mumbai, 1 Ahmedabad, 1 joint.'],
+    ['Travel Vlogger Partnerships','₹75,000/vlogger','₹1,50,000','2 vloggers in M3–M4. Sponsored road trip content.'],
+    ['Paid Social Ads (Meta/Google)','₹50,000','₹3,00,000','Targeted at car enthusiasts, 20–35, India.'],
+    ['Print & Outdoor (One-time)','—','₹30,000','Event banners, standees, flyers. M1–M2 only.'],
+    ['Marketing Contingency','—','₹70,000','Month-to-month variations buffer.'],
+  ],
+  total:['TOTAL MARKETING BUDGET (6 MONTHS)','','₹17,50,000','']
+},
+
+opex:{t:'Office & Operating Expenses — 6 Months',isTable:true,
+  headers:['ITEM','PER MONTH','6-MONTH TOTAL','NOTES'],
+  rows:[
+    ['Office Rent (co-working, 6–8 seats)','₹40,000','₹2,40,000','Awfis / 91Springboard / WeWork BKC range'],
+    ['Internet & Utilities','₹5,000','₹30,000','Jio Business Fiber 1Gbps'],
+    ['Tools & Subscriptions','₹15,000','₹90,000','Canva Pro, Notion, Slack, Adobe, Figma, Google Workspace'],
+    ['CEO + Sales Travel','₹20,000','₹1,20,000','Client meetings, inter-city day trips, event travel'],
+    ['Hardware Setup (One-Time)','—','₹1,50,000','2 laptops, printer, router, UPS, accessories'],
+    ['Miscellaneous','₹10,000','₹60,000','Printing, refreshments, team lunches, sundry'],
+  ],
+  total:['TOTAL OPEX (6 MONTHS)','','₹7,90,000','']
+},
+
+legal_spend:{t:'Legal & Compliance Budget — 6 Months',isTable:true,
+  headers:['ITEM','COST','TIMING','NOTES'],
+  rows:[
+    ['Pvt Ltd / LLP Incorporation','₹10,000–15,000','Month 1 (if not done)','Via LegalWiz or IndiaFilings'],
+    ['Trademark — "ModVala" (Class 41 + 42)','₹13,000','Month 1','₹5k govt fees + ₹8k attorney fees'],
+    ['DPIIT Startup India Filing','Free','Month 1','Online portal. Tax holiday benefits.'],
+    ['Employment Contracts + Annexures','₹15,000','Month 1 (one-time)','Startup lawyer drafts all 6 variants'],
+    ['GST Registration','Free','Month 1 (proactive)','Required when revenue exceeds ₹20L'],
+    ['Vendor Agreements & NDA Templates','₹20,000','Month 1 (one-time)','Standardised templates used repeatedly'],
+    ['ROC Filings (Equity Vest, M7)','₹5,000','Month 6–7','Form SH-7 per employee equity issuance'],
+    ['Legal Contingency','₹50,000','Ongoing buffer','Unexpected queries, contract negotiations'],
+  ],
+  total:['TOTAL LEGAL BUDGET (6 MONTHS)','₹1,13,000–1,18,000','','']
+},
+
+contingency:{t:'Contingency Buffer — ₹9 Lakhs',fields:[
+  {l:'AMOUNT & PURPOSE',v:'₹9 Lakhs held in a separate account. Used only for genuine emergencies or unplanned strategic opportunities — not for routine overspend.'},
+  {l:'RELEASE CONDITION',v:'CFO + CEO co-approval required. Each drawdown documented with a formal note: reason, amount, expected return, both signatures. Creates a paper trail for investor reporting.'},
+  {l:'VALID USE CASES',v:'Key hire joins late → bridge first month expenses. An OEM sponsor requires an event budget not in plan → fund against confirmed deal. Emergency technical work (developer contract, critical fix).'},
+  {l:'TOTAL 6-MONTH BUDGET SUMMARY',v:'Funding bridge: ₹69.8L core operating plan + ₹9L contingency + ₹17.2L founder/CFO operating reserve, working-capital float, launch overruns, tax/compliance cushion, and runway protection = ₹96L exactly.'}
+]},
+
+// ─── TECH INFRASTRUCTURE ───
+sb_overview:{t:'Supabase — Platform Overview & Pricing',fields:[
+  {l:'PLAN',v:'Pro Plan at $25/month (~₹2,100/month). This is the correct production tier for ModVala — removes project pausing, includes 100GB file storage, 250GB bandwidth, and 100K MAU in auth.'},
+  {l:'WHAT MODVALA USES',v:'Supabase Auth (user login via email/social), PostgreSQL database (all app data), File Storage (car photos, community posts, trip media), Realtime (community feed live updates).'},
+  {l:'INCLUDED IN PRO',v:'8GB database · 100GB file storage · 250GB egress bandwidth · 100K monthly active users · Daily backups · Email support · 500 realtime connections.'},
+  {l:'OVERAGE RATES (when limits exceeded)',v:'File Storage: $0.021/GB over 100GB. Database Storage: $0.125/GB over 8GB. Bandwidth (egress): $0.09/GB over 250GB. Auth MAU: $0.00325 per user over 100K.'},
+  {l:'COMPUTE',v:'Pro plan includes $10/month compute credit covering a Micro instance. ModVala at this scale will run comfortably on the Micro to Small compute instance. No upgrade needed for 6 months.'},
+  {l:'USD TO INR',v:'All Supabase costs are in USD. At ₹84/USD exchange rate: $25 = ₹2,100/month base. All overage amounts below are shown in both USD and INR.'}
+]},
+
+sb_storage:{t:'Supabase Storage — Deep Dive',isStorageTable:true},
+
+sb_auth:{t:'Supabase Auth & MAU Cost Projection',fields:[
+  {l:'INCLUDED MAU',v:'Pro plan includes 100,000 Monthly Active Users (MAU). An MAU is any user who logs into the app at least once per month. ModVala will not exceed 100K MAU within the 6-month plan — so auth cost is covered by the base $25 fee.'},
+  {l:'MAU vs REGISTERED USERS',v:'Not all registered users are MAU. A user registered but inactive for the month does not count. With 50,000 registered users by M6, and a 60–70% monthly engagement rate, we estimate ~30,000–35,000 MAU at M6 — well within the 100K limit.'},
+  {l:'WHEN WILL AUTH COST EXTRA?',v:'Only when MAU exceeds 100,000. At ModVala\'s growth trajectory, this happens in Year 2 (post 150K registered users with 65% engagement = ~100K MAU). At that point: $0.00325 per extra MAU. For 150K MAU → overage = $162/month (~₹13,600).'},
+  {l:'AUTH METHODS IN USE',v:'Email + password via Supabase Auth. Future: Google OAuth and Apple Sign-In. All covered under the same MAU pool — no extra per-method charge.'},
+  {l:'6-MONTH AUTH COST',v:'$0 in auth overages across all 6 months. The Pro plan base fee of $25/month fully covers all expected MAU usage.'},
+  {l:'REALTIME CONNECTIONS',v:'Pro plan includes 500 concurrent realtime connections. Community feed uses Supabase Realtime. At 50K users, peak concurrent sessions estimated at 200–300 — within limit. ₹0 overage.'}
+]},
+
+sb_monthly:{t:'Supabase Monthly Cost Forecast — Month 1 to Month 6',isMonthlyTable:true},
+
+firebase:{t:'Firebase — Crashlytics & Analytics',fields:[
+  {l:'SERVICE USED',v:'Firebase Crashlytics for crash reporting and Firebase Analytics for user behaviour analytics. Both are used as per the ModVala architecture (confirmed in the app blueprint document).'},
+  {l:'COST',v:'₹0 — completely free. Firebase Crashlytics is free and unlimited with no usage quotas, regardless of user count. Firebase Analytics is also free and unlimited. These are core Firebase products that Google provides at no charge on both Spark (free) and Blaze (pay-as-you-go) plans.'},
+  {l:'WHAT CRASHLYTICS PROVIDES',v:'Real-time crash reports grouped by issue type. Device and OS version breakdown. Affected user count per crash. Stack traces for developer debugging. Version comparison to see if a new release worsened stability.'},
+  {l:'WHAT FIREBASE ANALYTICS PROVIDES',v:'User funnel analysis (install → onboard → first log → Pro upgrade). Retention cohorts. Screen flow heatmaps. Event tracking (custom events like "fuel_logged", "trip_started", "pro_purchased"). All free, unlimited events.'},
+  {l:'6-MONTH COST',v:'Month 1: ₹0. Month 2: ₹0. Month 3: ₹0. Month 4: ₹0. Month 5: ₹0. Month 6: ₹0. Total Firebase cost over 6 months: ₹0.'},
+  {l:'FIREBASE PLAN',v:'Spark plan (free) is sufficient. If the team adds Cloud Functions or Firebase Storage in future, a switch to Blaze (pay-as-you-go) is required — but this is not planned in the current 6-month scope.'}
+]},
+
+revenuecat_cost:{t:'RevenueCat — Subscription Management Cost',fields:[
+  {l:'SERVICE',v:'RevenueCat manages in-app purchases, subscription entitlements, and cross-platform receipt validation for ModVala Pro subscriptions on Android.'},
+  {l:'FREE TIER',v:'RevenueCat is free up to $2,500 Monthly Tracked Revenue (MTR). For ModVala, this means the first ₹2.1 Lakhs (~$2,500) of monthly subscription revenue is managed at zero cost.'},
+  {l:'WHEN DOES COST START?',v:'Only when monthly subscription revenue exceeds $2,500 (~₹2.1L/month). At ModVala\'s trajectory: M6 target subscription revenue is ~₹4L/month. At that point, RevenueCat charges 1% of MTR above the free threshold. Estimated: ~$15/month (~₹1,260) at M6.'},
+  {l:'M1–M5 COST',v:'₹0 — subscription revenue will be below the $2,500 free threshold across Months 1–5.'},
+  {l:'M6 ESTIMATED COST',v:'~₹1,200/month (1% of revenue above ₹2.1L threshold). Negligible relative to subscription income.'},
+  {l:'WHAT REVENUECAT HANDLES',v:'Google Play billing integration. Pro entitlement checks in-app. Subscription renewal and cancellation webhooks. Subscriber analytics dashboard. Fraud prevention via receipt validation.'}
+]},
+
+playstore:{t:'Play Store & Supporting Services — Cost Overview',isTable:true,
+  headers:['SERVICE','COST','FREQUENCY','NOTES'],
+  rows:[
+    ['Google Play Developer Account','$25 (~₹2,100)','One-time','Lifetime registration fee for app publishing'],
+    ['Google Play Revenue Cut','30% of each transaction (M1), 15% after 12 months','Per subscription','₹99 subscription → Google takes ₹29.70 (M1) or ₹14.85 (after Y1)'],
+    ['Google Workspace (8 users)','₹1,000/month','Monthly','Company email @modvala.com for all team'],
+    ['Domain (modvala.com)','~₹1,000/year','Annual','GoDaddy or Namecheap'],
+    ['Figma (design)','₹4,000/month','Monthly','Professional team plan for UI/UX work'],
+    ['GitHub (code hosting)','₹2,000/month','Monthly','Team plan for repo management'],
+    ['Sentry (additional crash monitoring, optional)','₹0–₹2,000/month','Monthly','Optional supplement to Crashlytics. Free tier may suffice.'],
+  ],
+  total:['TOTAL SUPPORTING SERVICES/MONTH (excl. Play cut)','~₹8,000/month','','']
+},
+
+// ─── REVENUE ───
+
+subs:{t:'Revenue — Pro Subscriptions',fields:[
+  {l:'PRICING',v:'Starter Pro ₹99/month, Power Pro ₹149/month, annual plan ₹999/year. Revenue projection uses conservative blended ARPU of ₹119/month across monthly and annual equivalents.'},
+  {l:'PRO FEATURES',v:'Extra vehicle slots, premium trip recap images, gang trip creation, Pro badge, verified points boosters, advanced maintenance reminders, garage score analytics, early event access.'},
+  {l:'M6 CALCULATION',v:'5,000 paying users × ₹119 blended ARPU = ₹5,95,000 gross subscription revenue in Month 6. Google Play 30% year-1 fee leaves ₹4,16,500 net before RevenueCat.'},
+  {l:'CONVERSION ASSUMPTION',v:'50,000 registered users × 10% paid conversion = 5,000 payers. This is realistic for enthusiast communities when Pro controls status, trip tools, and community admin features.'},
+  {l:'ANNUAL PLAN UPSIDE',v:'If 25% of payers choose annual at ₹999, ModVala collects upfront cash and reduces churn. Annual plans improve runway even when monthly ARPU is reported conservatively.'}
+]},
+
+b2bads:{t:'Revenue — B2B Ads, Featured Listings & Local Packages',fields:[
+  {l:'MODEL',v:'Local garages, detailers, tyre shops, accessory dealers, dashcam/audio brands and insurance partners buy featured placement in Explore, community posts, trip routes, and social channels.'},
+  {l:'PRICING TIERS',v:'Local listing ₹7,500/month. Featured city package ₹25,000/month. Social + in-app campaign ₹35,000. 3-month city partner bundle ₹75,000.'},
+  {l:'M6 CALCULATION',v:'10 active local advertisers averaging ₹25,000 + 2 campaign bundles at ₹50,000 = ₹3,50,000 Month 6 revenue.'},
+  {l:'WHY IT SCALES',v:'Every new city adds another advertiser inventory pool without rebuilding the product. Sales team can close city-wise packages using app users + event proof.'}
+]},
+
+sponsors:{t:'Revenue — OEM, Fuel, Tyre & Brand Sponsorships',fields:[
+  {l:'MODEL',v:'Brands sponsor city events, gang trips, app leaderboards, creator campaigns, and road safety/maintenance challenges.'},
+  {l:'DEAL SIZE',v:'Pilot sponsorship ₹1L–2L. Monthly city sponsor ₹2L–5L. Larger OEM/fuel/tyre campaign ₹5L–10L depending on deliverables.'},
+  {l:'M6 CALCULATION',v:'1 confirmed title sponsor at ₹3,00,000 + 1 smaller partner at ₹1,50,000 = ₹4,50,000 Month 6 revenue.'},
+  {l:'TARGET SPONSORS',v:'Royal Enfield, TVS, Hero, Shell, Castrol, MRF, CEAT, Bridgestone, Bosch, GoPro, Garmin, dashcam brands, premium detailing brands.'}
+]},
+
+events:{t:'Revenue — Events, Meetups, Track Days & Vendor Stalls',fields:[
+  {l:'EVENT TYPES',v:'City meetups, biker breakfast rides, car showcases, track-day experiences, garage open days, detailing workshops, ModVala city nights.'},
+  {l:'REVENUE LINES',v:'Tickets + vendor stalls + title sponsor + merch + food partner commission + paid app installs/QR booth conversion.'},
+  {l:'M6 CALCULATION',v:'One 400-person event: 250 paid tickets × ₹399 = ₹99,750; 12 stalls × ₹10,000 = ₹1,20,000; sponsor ₹2,00,000; net rounded target ₹4,00,000.'},
+  {l:'MARKETING BENEFIT',v:'Events generate app downloads, creator content, sponsor proof, local sales leads, and community trust in one spend.'}
+]},
+
+trips:{t:'Revenue — Curated Trips, Gang Trips & Convoy Sponsorships',fields:[
+  {l:'MODEL',v:'Paid curated road trips and premium gang trip packages. Hotels, fuel brands, riding gear, tyres, and action-camera brands offset costs via sponsorship.'},
+  {l:'PRICING',v:'Short trip ₹3,999–8,999/person. Long trip ₹12,000–25,000/person. Sponsor packages ₹50,000–2L per trip.'},
+  {l:'M6 CALCULATION',v:'One curated trip net ₹1.40L + gang trip premium/partner revenue ₹60k + creator travel campaign ₹1.00L = ₹3,00,000 Month 6.'},
+  {l:'PRODUCT LINK',v:'Gang Trip tab becomes a monetizable feature: application approval, convoy tracking, SOS, verified completion points, trip recap, sponsor visibility.'}
+]},
+
+marketplace:{t:'Revenue — Marketplace Commission & Verified Partner Leads',fields:[
+  {l:'MODEL',v:'Users discover mods, accessories, tyre/audio shops, wraps, PPF, detailing, insurance, and service providers. ModVala earns commission or qualified lead fees.'},
+  {l:'TAKE RATE',v:'5–12% commission on fulfilled orders or ₹200–1,000 per qualified lead depending on category.'},
+  {l:'M6 CALCULATION',v:'300 qualified leads × ₹300 average lead fee + ₹60,000 accessory/service commission = ₹1,50,000 Month 6.'},
+  {l:'UPSIDE',v:'This becomes powerful after trust is built because car/bike modification purchases are high-ticket and repeatable.'}
+]},
+
+garage_saas:{t:'Revenue — Garage SaaS / CRM for Partners',fields:[
+  {l:'MODEL',v:'Garages and detailers pay for a dashboard to manage ModVala leads, offers, coupons, reviews, booking requests, and sponsored posts.'},
+  {l:'PRICING',v:'Starter ₹999/month. Pro ₹1,999/month. City Partner ₹2,999/month with boosted placement.'},
+  {l:'M6 CALCULATION',v:'50 partner businesses × ₹1,499 blended monthly fee = ₹74,950, rounded to ₹75,000 Month 6.'},
+  {l:'STRATEGIC VALUE',v:'Turns B2B advertisers into recurring SaaS customers instead of one-off campaign buyers.'}
+]},
+
+affiliate:{t:'Revenue — Finance, Insurance, Warranty & Roadside Leads',fields:[
+  {l:'MODEL',v:'Referral income from vehicle insurance renewals, extended warranty, loans, FASTag, roadside assistance, tyres, batteries, and service packages.'},
+  {l:'PAYOUT RANGE',v:'₹200–500 for simple qualified leads; ₹1,000–2,000+ for converted insurance/finance/warranty cases depending on partner commercial terms.'},
+  {l:'M6 CALCULATION',v:'250 qualified leads × ₹500 blended payout = ₹1,25,000 Month 6.'},
+  {l:'WHY IT FITS',v:'Trip tracker, garage logs, reminders, and vehicle profiles create natural intent moments for these offers without feeling spammy.'}
+]},
+
+influence:{t:'Revenue — Influencer & Creator Campaign Management',fields:[
+  {l:'MODEL',v:'Brands pay ModVala to manage creator promotions. ModVala acts as campaign manager and takes a 20–30% margin.'},
+  {l:'DEAL STRUCTURE EXAMPLE',v:'Brand pays ₹1,00,000 for creator distribution. Creators receive ₹70,000. ModVala retains ₹30,000 management margin.'},
+  {l:'M6 CALCULATION',v:'4 managed campaigns × ₹30,000 margin = ₹1,20,000 Month 6.'},
+  {l:'ASSET CREATED',v:'A verified automotive creator database with niche, audience, city, rate card, past campaign performance, and reliability score.'}
+]},
+
+revmodel:{t:'P&L Projection — Month 1 to Month 6',isRevTable:true},
+
+
+// ─── PLANS ───
+plan_ceo:{t:'CEO — 6-Month Day-by-Day Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — FOUNDATIONS',weeks:[
+    {w:'WEEK 1 (Mon–Fri, 11am–8pm)',tasks:['11am: All-team standup — what did you do yesterday, what today, any blockers (15 min)','11:30am: App launch checklist review with developer — target Play Store live by Day 7','2pm: Sign off all employment contracts with Legal HR','4pm: Brief Sales team — territory assignments, pitch material, CRM setup','6pm: Review Month 1 content plan with Marketing Head — approve or revise']},
+    {w:'WEEK 2',tasks:['Confirm app is live on Play Store — respond personally to first user reviews','Begin outreach to 5 potential brand partners — introductory calls','Review Sales exec territory maps and first week lead logs','Work with Editor on launch video script — "What is ModVala?"','Friday 6pm: First CEO + CFO P&L review — Month 1 budget confirmation']},
+    {w:'WEEKS 3–4',tasks:['Attend 1 car-related event per week to build network — Sunday meets, car club gatherings','Confirm venue for Month 2 first Mumbai car meetup','Begin Month 2 influencer contract approvals for Marketing Head','App analytics review: downloads, session length, crash rate, user funnel drop-off']}
+  ]},
+  {m:'MONTH 2 — FIRST TRACTION',weeks:[
+    {w:'ESTABLISHED DAILY ROUTINE',tasks:['11am: Standup (15 min) — now tracked against weekly OKRs','11:30am: Partner/brand email follow-ups — respond within 2 hours','3pm: Sales pipeline review — 10-min call each exec for deal update','5pm: Product review — app feature progress, approve or deprioritise items','7pm: Investor (CFO) sync note — week\'s progress summary']},
+    {w:'MONTH 2 MILESTONES',tasks:['App downloads: 2,000+ (target)','First paid ad deal signed: ₹15,000–30,000','First car meetup in Mumbai completed','Sales exec Mumbai: 3+ qualified leads','Instagram: 1,000+ followers']}
+  ]},
+  {m:'MONTHS 3–4 — GROWTH & FIRST MAJOR DEALS',weeks:[
+    {w:'KEY CEO FOCUS AREAS',tasks:['Negotiate and close first brand sponsorship (target ₹1–2L value)','Build relationships with 2–3 automotive YouTubers for road trip collaboration','Conduct Month 3 performance reviews for all employees — flag any underperformers early','Plan Month 6 large event — venue booking must happen by Month 4','Weekly: Review app retention rate (target >30% of installs still active at Day 30)']}
+  ]},
+  {m:'MONTHS 5–6 — SCALE & SERIES A PREP',weeks:[
+    {w:'KEY CEO FOCUS AREAS',tasks:['Host Month 6 large event — target 300–500 attendees, 2 sponsors','Begin Series A preparation — update pitch deck and financial model with M1–M6 actual data','Conduct 6-month performance reviews — equity vest decisions with CFO','Set Month 7–12 OKRs and budget','Financer quarterly debrief — present full 6-month results vs plan with updated P&L']}
+  ]}
+]},
+
+plan_cfo:{t:'CFO — 6-Month Day-by-Day Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — FINANCIAL FOUNDATIONS',weeks:[
+    {w:'WEEK 1 — PRIORITY ACTIONS',tasks:['Open company bank account — HDFC/ICICI Business Current Account','Set up accounting software — Zoho Books or Tally ERP','Review and approve all 6 employment contracts drafted by Legal HR','Create 6-month budget spreadsheet — share with CEO','Set up separate contingency savings account (₹9L transferred here)']},
+    {w:'WEEKS 2–4',tasks:['Set up expense reporting workflow — receipts via WhatsApp, logged in shared sheet','GST registration if not already done','Create vendor master list — all parties that will receive regular payments','Disburse first salary by 1st of Month 2 — verify all bank details in advance','Establish Friday 6pm joint P&L review with CEO as standing weekly meeting']}
+  ]},
+  {m:'MONTHS 2–6 — MONTHLY FINANCE CADENCE',weeks:[
+    {w:'RECURRING MONTHLY SCHEDULE',tasks:['Day 1: All salaries disbursed. Rent and fixed vendor payments processed.','Day 5: Previous month P&L finalised and shared with CEO','Day 10: Marketing spend review with Marketing Head — approve or adjust budget','Day 15: Mid-month burn rate check — are we on track? Flag any anomaly to CEO.','Day 20: Sales pipeline revenue forecast — what deals are expected to close this month?','Day 25: Payroll inputs for next month prepared — submitted by Legal HR, verified by CFO','Last Friday: Joint P&L meeting with CEO (30 min)']},
+    {w:'MONTH 5–6 — AUDIT & REPORTING',tasks:['Prepare 6-month financial audit report for financer','Run 6-month equity vest review — confirm which employees qualify','File ROC updates for any share issuances','Prepare financial model and budget for Months 7–12','Deliver full financial presentation at Month 6 board meeting']}
+  ]}
+]},
+
+plan_mkt:{t:'Marketing Head — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — BRAND SETUP & OUTREACH',weeks:[
+    {w:'WEEK 1',tasks:['11am: Daily standup','Create Month 1 content calendar in Notion — share with Editor by Day 2','Research 20 target influencers — build spreadsheet with contact, followers, niche, rate card','DM first 10 micro-influencers — introduce ModVala, request a collaboration call','Brief Sales team on marketing assets — pitch deck, brochure, social media links','Set up Instagram, YouTube, LinkedIn, Twitter/X business accounts if not complete']},
+    {w:'WEEKS 2–4',tasks:['Confirm 3 micro-influencer collaborations for Month 2','Plan first Mumbai car meetup — confirm date, venue, logistics with Admin','Create influencer brief template — key messages, what not to say, hashtags, app link','Install Meta Business Suite — set up pixel for tracking ad performance','Month 1 end: influencer pipeline confirmed, first event planned, content calendar active']}
+  ]},
+  {m:'MONTHS 2–3 — EXECUTION & TRACTION',weeks:[
+    {w:'WEEKLY ROUTINE',tasks:['Monday 11am: Standup + weekly social plan review with Editor','Tuesday: Brand outreach — 5 new cold emails or DMs to potential sponsors','Wednesday: 1:1 with CEO — KPI review, next week priorities','Thursday: Sales coordination — share marketing leads with Sales for follow-up','Friday: Week analytics review — Instagram insights, Play Store downloads, campaign UTMs']}
+  ]},
+  {m:'MONTHS 4–6 — SCALE & BRAND ESTABLISHMENT',weeks:[
+    {w:'KEY ACTIONS',tasks:['Negotiate and execute first paid event sponsorship deal','Launch creator affiliate programme — 10% revenue share on subscriptions they drive','Pitch to automotive media (NDTV Auto, ZigWheels, CarWale) for editorial coverage','Manage Month 6 large event — 300+ attendees, title sponsor, full social media coverage','Monthly: Present marketing ROI report to CEO — spend vs leads vs conversions vs revenue']}
+  ]}
+]},
+
+plan_edit:{t:'Editor & Designer — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — CONTENT FOUNDATION',weeks:[
+    {w:'DAILY ROUTINE (11am–8pm)',tasks:['11am: Standup with Marketing Head','11:30am: Reply to all social media comments from previous day — within 24 hours','12pm–4pm: Content creation block — filming, editing, designing','4pm: Review content calendar in Notion — plan next 3 days','6pm: Schedule posts via Meta Business Suite — never post manually','7pm: Research trending audio for Reels — note 3 options for use that week']},
+    {w:'WEEK 1 DELIVERABLES',tasks:['Create all social media bios — consistent branding across all platforms','Design profile picture, highlights covers, Linktree bio link','Create Month 1 Notion content calendar with every post planned','Produce first Reel: "What is ModVala?" — 30 seconds, fast cuts, punchy hook']}
+  ]},
+  {m:'MONTHS 2–3 — CONSISTENCY & GROWTH',weeks:[
+    {w:'WEEKLY CONTENT TARGETS',tasks:['5 Instagram posts/week (Reels, carousels, and single images)','3 Instagram Reels/week — 80% of follower growth comes from Reels','2 YouTube Shorts/week — repurpose best-performing Instagram Reels','1 long-form YouTube video/month — event coverage, app tutorial, or user feature','Daily: 5 comments on non-ModVala car posts to build organic algorithm visibility','Daily: 5–10 Instagram Stories (behind the scenes, polls, countdowns, Q&As)']}
+  ]},
+  {m:'MONTHS 4–6 — BRAND IDENTITY & CAMPAIGNS',weeks:[
+    {w:'KEY FOCUS AREAS',tasks:['Complete brand identity kit — font standards, colour palette, icon set, all post templates','Design all event promotional assets — posters, stories, countdown posts, live coverage graphics','Month 5: Analytics deep-dive — which content formats have best follower conversion and engagement? Adjust 3-month strategy accordingly.','Build YouTube long-form presence — event vlogs, car reviews with community members']}
+  ]}
+]},
+
+plan_sales1:{t:'Sales Executive Mumbai — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — TERRITORY MAPPING',weeks:[
+    {w:'WEEK 1',tasks:['11am: Daily standup call with Marketing Head','Create territory map — list 50 target businesses in Mumbai (all car-related)','LinkedIn: Connect with 10 decision-makers per day (marketing managers, shop owners)','First 5 cold in-person visits — car accessory shops in Dadar/Grant Road area','Log all leads in CRM (shared Google Sheet) — every contact, every conversation']},
+    {w:'WEEKS 2–4',tasks:['Set 10+ follow-up meetings from Week 1 contacts','Join 2 Mumbai car enthusiast WhatsApp groups — build presence authentically','Attend at least 1 weekend car event to collect business cards and network','Month 1 close: 10+ qualified leads in pipeline, at least 1 proposal submitted']}
+  ]},
+  {m:'MONTHS 2–3 — FIRST DEALS',weeks:[
+    {w:'KEY ACTIONS',tasks:['Month 2 target: 2 deals closed (minimum ₹15,000 each)','Send proposal within 24 hours of every meeting — follow up every 3 days','Attend every ModVala event in Mumbai — most powerful in-person sales tool','Identify 5 premium multi-location clients for larger deal pipeline','Weekly call with Marketing Head — 15 min pipeline review, flag any support needed']}
+  ]},
+  {m:'MONTHS 4–6 — SCALE & RETENTION',weeks:[
+    {w:'KEY MILESTONES',tasks:['Renew Month 2 clients — first renewal cycle. Upsell to larger packages where possible.','Target: 5+ active paying clients by M4, 8–10 by M6','Month 5 target: ₹1L+ in total closed deals this month','Incentive calculation: base ₹80k + incentive on deals closed — track monthly with Marketing Head','Month 6: Document 1 detailed client case study for use in sales collateral']}
+  ]}
+]},
+
+plan_sales2:{t:'Sales Executive Ahmedabad — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — TERRITORY MAPPING (AHMEDABAD)',weeks:[
+    {w:'WEEK 1',tasks:['11am: Daily standup with Marketing Head','Map territory — SG Highway, CG Road, Prahlad Nagar, Naranpura, GIDC areas','Visit 5 detailing studios and car accessory shops per day','Join Ahmedabad car enthusiast community groups (Facebook, WhatsApp)','Attend Sunday car meets — Law Garden or Thaltej area','End of Week 1: 25+ businesses visited, 10+ contacts collected']},
+    {w:'WEEKS 2–4',tasks:['Follow up with all Week 1 contacts — set 10+ meetings','Identify 2–3 multi-location businesses for larger deal potential','Adjust pricing approach for Ahmedabad market sensitivity — ₹8–12k packages may outperform ₹15–20k Mumbai rates','Month 1 close: 8+ qualified leads, 1 deal in active negotiation']}
+  ]},
+  {m:'MONTHS 2–6 — DEALS & GROWTH',weeks:[
+    {w:'KEY MILESTONES',tasks:['M2: 2 deals closed. M3: 3–4 deals. M4–M6: 5+ deals/month with renewals','Month 3: First Ahmedabad ModVala car meetup — coordinate with Marketing Head','Month 4: Pitch to 1 large automotive dealer or brand in Gujarat','Month 5: Build referral network — each happy client refers 1 new prospect','Month 6: Document Gujarat case study for marketing — real business result from Ahmedabad']}
+  ]}
+]},
+
+plan_legal:{t:'Legal & HR Manager — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — ALL LEGAL FOUNDATIONS',weeks:[
+    {w:'WEEK 1 — PRIORITY LIST',tasks:['Draft all 6 employment contracts + appointment annexures (equity clause)','Open digital and physical employee files for all 6 hires','Initiate DPIIT Startup India registration — online portal, free, Week 1','Begin trademark search for "ModVala" (Class 41 and Class 42)','Create employee handbook — leave policy, code of conduct, expense policy, WFH policy','Set up attendance tracking — Google Sheet, daily check-in 11am, check-out 8pm']},
+    {w:'WEEKS 2–4',tasks:['File trademark application for ModVala','Collect KYC documents from all employees — Aadhaar, PAN, bank account details','Set up payroll inputs sheet — submitted to CFO by 25th of every month','Draft standard NDA and vendor agreement templates — share with CEO for approval','Month 1 end: All employment contracts signed, all legal registrations initiated']}
+  ]},
+  {m:'MONTHS 2–4 — HR OPERATIONS',weeks:[
+    {w:'MONTHLY HR CYCLE',tasks:['1st: Confirm all salaries disbursed (verify with CFO)','5th: Submit attendance report to CFO','10th: Review any HR issues, complaints, or performance flags from previous month','20th: Collect all employee expense claims — verify receipts, submit to CFO','25th: Submit next month payroll inputs to CFO (salary, incentives, any changes)','Ongoing: Handle hiring documentation for any new joiners approved by CEO']}
+  ]},
+  {m:'MONTHS 5–6 — EQUITY VEST & COMPLIANCE',weeks:[
+    {w:'KEY ACTIONS',tasks:['Prepare 6-month equity vest review documentation for all employees','Coordinate with CA or startup lawyer for ROC filings related to equity issuance','Update company shareholding register post equity vest decisions','Prepare HR compliance report for Month 6 financer review','Ensure all vendor contracts are current and renewal dates tracked in compliance calendar']}
+  ]}
+]},
+
+plan_admin:{t:'Admin & Infrastructure — 6-Month Execution Plan',isPlan:true,months:[
+  {m:'MONTH 1 — BUILD OFFICE FROM SCRATCH',weeks:[
+    {w:'DAY-BY-DAY WEEK 1',tasks:['Day 1 (Mon): Confirm office or co-working space — get keys, WiFi login, access cards','Day 1: Order internet — Jio Business Fiber (same-day activation available in most Mumbai areas)','Day 2 (Tue): Procure furniture — 5 desks, 8 chairs, 1 whiteboard','Day 3 (Wed): Procure hardware — 2 laptops if needed, laser printer, router, UPS','Day 4 (Thu): Set up Google Workspace — create all @modvala.com email accounts','Day 5 (Fri): Office fully operational. All employees have login credentials. WiFi tested.']},
+    {w:'WEEKS 2–4',tasks:['Create physical and digital asset register — every item logged (laptops, chairs, printer)','Build vendor contact list — internet provider, electricity, cleaning, pantry','Set up company WhatsApp Business account','Book printing — business cards for all employees, 100 brochures, 2 rollup standees','Set up petty cash box — ₹5,000 cash for small daily expenses (receipts mandatory)']}
+  ]},
+  {m:'MONTHS 2–4 — OPERATIONS MANAGEMENT',weeks:[
+    {w:'MONTHLY ADMIN CYCLE',tasks:['1st: Pay office rent and all fixed vendor bills — no late payments','5th: Submit full expense report to CFO — all vendor invoices and receipts','10th: Asset register review — anything lost, damaged, or needs replacement?','15th: Check all tool subscription renewal dates — set alerts 30 days in advance','20th: Book any travel for following month — flights and hotels for CEO/Sales team','Weekly: Restock office pantry — tea, coffee, water, biscuits (₹2,000–3,000/month)']}
+  ]},
+  {m:'MONTHS 5–6 — REVIEW & NEXT PHASE PLANNING',weeks:[
+    {w:'KEY ACTIONS',tasks:['Audit all assets — what needs replacement or upgrade for Months 7–12?','Review office lease — prepare for renewal or evaluate upgrading if team size grows','Prepare 6-month admin cost report for financer briefing','Source quotes for any additional hardware if new hires are approved','Create Month 7–12 admin budget proposal for CFO review']}
+  ]}
+]}
+
+}; // end D
+
+// ══════════════════════
+// RENDER ENGINE
+// ══════════════════════
+let openId = null;
+
+function buildStorageTable() {
+  return `
+  <div class="dsec">
+    <div class="dsec-title">STORAGE USAGE ASSUMPTIONS PER USER (MONTHLY)</div>
+    <div class="table-scroll"><table class="tech-table">
+      <thead><tr><th>CONTENT TYPE</th><th>AVG SIZE</th><th>FREQUENCY</th><th>PER USER/MONTH</th></tr></thead>
+      <tbody>
+        <tr><td>Car profile photos (garage)</td><td>2 MB/photo</td><td>3 photos avg lifetime</td><td>~1 MB/mo (amortised)</td></tr>
+        <tr><td>Community posts (images)</td><td>1.5 MB/image</td><td>2 posts/user/month</td><td>~3 MB/mo</td></tr>
+        <tr><td>Community posts (video, optional)</td><td>15 MB/video</td><td>0.2 videos/user/month</td><td>~3 MB/mo</td></tr>
+        <tr><td>Trip photos</td><td>2 MB/photo</td><td>5 photos/trip, 0.5 trips/mo</td><td>~5 MB/mo</td></tr>
+        <tr><td>Profile / avatar</td><td>500 KB</td><td>One-time</td><td>~0.2 MB/mo</td></tr>
+        <tr class="total-row"><td colspan="3"><strong>ESTIMATED STORAGE PER ACTIVE USER / MONTH</strong></td><td><strong class="num">~12 MB/user/mo</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="dsec-title">BANDWIDTH / EGRESS ASSUMPTIONS</div>
+    <div class="table-scroll"><table class="tech-table">
+      <thead><tr><th>CONTENT TYPE</th><th>PER ACTIVE USER/MONTH</th><th>NOTES</th></tr></thead>
+      <tbody>
+        <tr><td>Community feed image loading</td><td>~40 MB</td><td>~25 images/day × 1.5MB × 30 days ÷ by CDN cache benefit</td></tr>
+        <tr><td>Garage photo loading</td><td>~10 MB</td><td>Own and friends' garages browsed</td></tr>
+        <tr><td>Trip media loading</td><td>~20 MB</td><td>Trip replays and shared routes</td></tr>
+        <tr><td>API responses (JSON)</td><td>~5 MB</td><td>Database queries — very low data footprint</td></tr>
+        <tr class="total-row"><td><strong>EST. EGRESS PER ACTIVE USER / MONTH</strong></td><td><strong class="num">~75 MB/user/mo</strong></td><td>Conservative — CDN caching reduces real egress by 40–60%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="dsec-title">SUPABASE PRO PLAN STORAGE LIMITS</div>
+    <div class="table-scroll"><table class="tech-table">
+      <thead><tr><th>METRIC</th><th>INCLUDED IN PRO</th><th>OVERAGE RATE</th></tr></thead>
+      <tbody>
+        <tr><td>File Storage</td><td>100 GB</td><td>$0.021/GB (~₹1.76/GB)</td></tr>
+        <tr><td>Bandwidth (Egress)</td><td>250 GB</td><td>$0.09/GB (~₹7.56/GB)</td></tr>
+        <tr><td>Database Storage</td><td>8 GB</td><td>$0.125/GB (~₹10.50/GB)</td></tr>
+        <tr><td>Monthly Active Users</td><td>100,000</td><td>$0.00325/MAU (~₹0.27/user)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="warn-box">
+      <div class="warn-label">⚠ KEY COST DRIVER — BANDWIDTH (EGRESS)</div>
+      <div class="note-text">Bandwidth is the most sensitive cost. Supabase charges $0.09/GB for egress beyond 250GB. A media-heavy community app serving images/video can burn through this quickly. Recommendation: enable Supabase's CDN caching from Day 1 — this reduces egress by 40–60% by serving cached images directly from edge nodes without charging egress again. At 50K active users, effective egress with caching is ~1.5TB/month — still within a manageable range.</div>
+    </div>
+  </div>`;
+}
+
+function buildMonthlyTable() {
+  const rows = [
+    {m:'Month 1',users:500,mau:300,stoGB:0.006,bwGB:0.023,plan:'Pro',base:25,overage:0,total:25,totalINR:2100,notes:'Well within all limits. Soft launch.'},
+    {m:'Month 2',users:2000,mau:1200,stoGB:0.024,bwGB:0.09,plan:'Pro',base:25,overage:0,total:25,totalINR:2100,notes:'Storage & BW tiny. ₹0 overage.'},
+    {m:'Month 3',users:10000,mau:6000,stoGB:0.12,bwGB:0.45,plan:'Pro',base:25,overage:0,total:25,totalINR:2100,notes:'Still within 100GB storage, 250GB BW limits.'},
+    {m:'Month 4',users:25000,mau:15000,stoGB:0.30,bwGB:1.13,plan:'Pro',base:25,overage:8,total:33,totalINR:2772,notes:'BW exceeds 250GB — ~$8 overage (~880MB excess × $0.09).'},
+    {m:'Month 5',users:38000,mau:23000,stoGB:0.46,bwGB:1.73,plan:'Pro',base:25,overage:17,total:42,totalINR:3528,notes:'BW ~1.7TB. Overage ~$17. Storage within limit.'},
+    {m:'Month 6',users:50000,mau:32000,stoGB:0.60,bwGB:2.25,plan:'Pro',base:25,overage:25,total:50,totalINR:4200,notes:'BW ~2.25TB. Overage ~$25. Total $50/mo (~₹4,200). Comfortable.'},
+  ];
+  let html = `<div class="dsec"><div class="dsec-title">USER GROWTH ASSUMPTIONS</div>
+  <div class="table-scroll"><table class="tech-table">
+    <thead><tr><th>MONTH</th><th>REGISTERED USERS</th><th>EST. MAU</th><th>FILE STORAGE USED</th><th>EST. EGRESS (w/ CDN)</th><th>SUPABASE PLAN</th><th>BASE COST</th><th>OVERAGE</th><th>TOTAL (USD)</th><th>TOTAL (INR)</th><th>NOTES</th></tr></thead>
+    <tbody>`;
+  for (const r of rows) {
+    const isHigh = r.overage > 0;
+    html += `<tr ${isHigh ? 'style="color:var(--amber)"' : ''}>
+      <td class="num">${r.m}</td>
+      <td class="num">${r.users.toLocaleString('en-IN')}</td>
+      <td class="num">${r.mau.toLocaleString('en-IN')}</td>
+      <td class="num">${r.stoGB.toFixed(2)} GB</td>
+      <td class="num">${r.bwGB.toFixed(2)} TB</td>
+      <td><span class="badge-blue">${r.plan}</span></td>
+      <td class="num">$${r.base}</td>
+      <td class="num" style="color:${r.overage>0?'var(--amber)':'var(--green)'}">$${r.overage}</td>
+      <td class="num" style="color:var(--lime)">$${r.total}</td>
+      <td class="num" style="color:var(--lime)">₹${r.totalINR.toLocaleString('en-IN')}</td>
+      <td style="font-size:11px;color:var(--t3)">${r.notes}</td>
+    </tr>`;
+  }
+  html += `<tr class="total-row"><td colspan="8"><strong>6-MONTH TOTAL SUPABASE COST</strong></td><td class="num"><strong>$200</strong></td><td class="num"><strong>₹16,800</strong></td><td style="font-size:11px">~₹2,800/month avg</td></tr>
+    </tbody></table></div>
+    <div class="dsec-title">FULL TECH STACK COST SUMMARY — 6 MONTHS</div>
+    <div class="table-scroll"><table class="tech-table">
+      <thead><tr><th>SERVICE</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th><th>6-MO TOTAL</th></tr></thead>
+      <tbody>
+        <tr class="free-row"><td>Firebase Crashlytics</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0 (FREE)</td></tr>
+        <tr class="free-row"><td>Firebase Analytics</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0 (FREE)</td></tr>
+        <tr class="free-row"><td>RevenueCat</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹0</td><td>₹1,200</td><td>₹1,200</td></tr>
+        <tr><td>Supabase (base + overage)</td><td>₹2,100</td><td>₹2,100</td><td>₹2,100</td><td>₹2,772</td><td>₹3,528</td><td>₹4,200</td><td>₹16,800</td></tr>
+        <tr><td>Google Workspace (8 users)</td><td>₹1,000</td><td>₹1,000</td><td>₹1,000</td><td>₹1,000</td><td>₹1,000</td><td>₹1,000</td><td>₹6,000</td></tr>
+        <tr><td>Domain + Dev tools (GitHub etc.)</td><td>₹3,000</td><td>₹2,000</td><td>₹2,000</td><td>₹2,000</td><td>₹2,000</td><td>₹2,000</td><td>₹13,000</td></tr>
+        <tr><td>Play Store (one-time reg.)</td><td>₹2,100</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>₹2,100</td></tr>
+        <tr class="total-row"><td><strong>TOTAL TECH INFRA / MONTH</strong></td><td><strong>₹8,200</strong></td><td><strong>₹5,100</strong></td><td><strong>₹5,100</strong></td><td><strong>₹5,772</strong></td><td><strong>₹6,528</strong></td><td><strong>₹8,400</strong></td><td><strong>₹39,100</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note-box"><div class="note-label">📌 NOTE ON PLAY STORE REVENUE SHARE</div><div class="note-text">Google Play takes 30% of each subscription transaction in Year 1, reducing to 15% after 12 months. This is not a Supabase/Firebase cost — it is deducted from gross revenue. At Month 6 Pro subscription revenue of ~₹4L/month, Play Store takes ~₹1.2L (30%) → Net to ModVala: ~₹2.8L. After Year 1, the cut drops to 15%, increasing net revenue significantly.</div></div>
+  </div>`;
+  return html;
+}
+
+
+function moneyINR(n){
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+function lakh(n){
+  const sign = n < 0 ? '-' : '';
+  const abs = Math.abs(n);
+  return sign + '₹' + (abs/100000).toFixed(abs >= 1000000 ? 1 : 2).replace(/\.00$/,'') + 'L';
+}
+function buildRevTable() {
+  const rows = [
+    {m:'Month 1', subs:9900, b2b:0, sponsors:0, events:0, trips:0, market:0, burn:1600000},
+    {m:'Month 2', subs:29700, b2b:30000, sponsors:0, events:15000, trips:0, market:0, burn:1600000},
+    {m:'Month 3', subs:79200, b2b:75000, sponsors:0, events:20000, trips:15000, market:25000, burn:1600000},
+    {m:'Month 4', subs:148500, b2b:150000, sponsors:150000, events:100000, trips:140000, market:75000, burn:1600000},
+    {m:'Month 5', subs:247500, b2b:250000, sponsors:300000, events:150000, trips:200000, market:150000, burn:1600000},
+    {m:'Month 6', subs:595000, b2b:350000, sponsors:450000, events:400000, trips:420000, market:155000, burn:1600000}
+  ];
+  let totalRevenue = 0, totalBurn = 0;
+  let html = '<div class="dsec">' +
+    '<div class="dsec-title">MONTHLY REVENUE PROJECTION — AUTO-CALCULATED BASE CASE</div>' +
+    '<div class="table-scroll"><table class="tech-table">' +
+    '<thead><tr><th>MONTH</th><th>PRO SUBS</th><th>B2B ADS</th><th>SPONSORS</th><th>EVENTS</th><th>TRIPS + CREATORS</th><th>MARKETPLACE / SAAS / AFFILIATE</th><th>TOTAL REVENUE</th><th>BURN</th><th>NET</th></tr></thead><tbody>';
+  for (const r of rows){
+    const revenue = r.subs + r.b2b + r.sponsors + r.events + r.trips + r.market;
+    const net = revenue - r.burn;
+    totalRevenue += revenue; totalBurn += r.burn;
+    html += '<tr>' +
+      '<td class="num">' + r.m + '</td>' +
+      '<td class="num">' + moneyINR(r.subs) + '</td>' +
+      '<td class="num">' + moneyINR(r.b2b) + '</td>' +
+      '<td class="num">' + moneyINR(r.sponsors) + '</td>' +
+      '<td class="num">' + moneyINR(r.events) + '</td>' +
+      '<td class="num">' + moneyINR(r.trips) + '</td>' +
+      '<td class="num">' + moneyINR(r.market) + '</td>' +
+      '<td class="num" style="color:' + (revenue >= 1600000 ? 'var(--green)' : 'var(--amber)') + '">' + moneyINR(revenue) + '</td>' +
+      '<td class="num" style="color:var(--coral)">' + moneyINR(r.burn) + '</td>' +
+      '<td class="num" style="color:' + (net >= 0 ? 'var(--green)' : 'var(--coral)') + '">' + (net >= 0 ? moneyINR(net) : '-' + moneyINR(Math.abs(net))) + '</td>' +
+    '</tr>';
+  }
+  const totalNet = totalRevenue - totalBurn;
+  const m6 = rows[5].subs + rows[5].b2b + rows[5].sponsors + rows[5].events + rows[5].trips + rows[5].market;
+  html += '<tr class="total-row"><td><strong>6-MONTH TOTAL</strong></td><td colspan="6"></td><td class="num"><strong>' + moneyINR(totalRevenue) + '</strong></td><td class="num"><strong>' + moneyINR(totalBurn) + '</strong></td><td class="num" style="color:var(--coral)"><strong>' + lakh(totalNet) + '</strong></td></tr>' +
+      '</tbody></table></div>' +
+    '<div class="note-box"><div class="note-label">EXACT CALCULATION SUMMARY</div><div class="note-text">Total planned deployment is ₹96,00,000. Base-case 6-month revenue potential is ' + moneyINR(totalRevenue) + '. Net capital consumed = ₹96,00,000 - ' + moneyINR(totalRevenue) + ' = ' + moneyINR(9600000-totalRevenue) + '. Month 6 revenue is ' + moneyINR(m6) + ', which is ' + moneyINR(m6-rows[5].burn) + ' above the ₹16,00,000 monthly burn.</div></div>' +
+    '<div class="warn-box"><div class="warn-label">CONSERVATIVE NOTE FOR FINANCER</div><div class="note-text">If monetization is delayed by 60 days, the ₹96L ask still covers the operating sprint. If Month 6 monetization lands as projected, the company exits the funded phase with a stronger cash position and a clear path to profitability.</div></div>' +
+  '</div>';
+  return html;
+}
+
+
+function buildDrawer(id, d) {
+  let html = `<div class="drawer-top"><div class="drawer-title">${d.t}</div><button class="drawer-close" onclick="cls('${id}',event)">✕ close</button></div>`;
+
+  if (d.isStorageTable) {
+    html += buildStorageTable();
+    return html;
+  }
+  if (d.isMonthlyTable) {
+    html += buildMonthlyTable();
+    return html;
+  }
+  if (d.isRevTable) {
+    html += buildRevTable();
+    return html;
+  }
+  if (d.isTable) {
+    html += `<div class="dsec"><div class="table-scroll"><table class="tech-table"><thead><tr>`;
+    for (const h of d.headers) html += `<th>${h}</th>`;
+    html += `</tr></thead><tbody>`;
+    for (const r of d.rows) {
+      html += '<tr>';
+      for (const c of r) html += `<td>${c}</td>`;
+      html += '</tr>';
+    }
+    if (d.total) {
+      html += '<tr class="total-row">';
+      for (const c of d.total) html += `<td><strong>${c}</strong></td>`;
+      html += '</tr>';
+    }
+    html += `</tbody></table></div>`;
+    return html;
+  }
+  if (d.isPlan) {
+    for (const mo of d.months) {
+      html += `<div class="dsec"><div class="plan-month-head">${mo.m}</div>`;
+      for (const wk of mo.weeks) {
+        html += `<div class="week-block"><div class="week-label">${wk.w}</div><div class="plan-tasks">`;
+        for (const t of wk.tasks) html += `<div class="plan-task">${t}</div>`;
+        html += `</div></div>`;
+      }
+      html += `</div>`;
+    }
+    return html;
+  }
+  // Standard fields
+  html += `<div class="drawer-body">`;
+  for (const f of d.fields) html += `<div><div class="dl">${f.l}</div><div class="dv">${f.v}</div></div>`;
+  html += `</div>`;
+  return html;
+}
+
+function tog(id, el) {
+  const drawer = document.getElementById('d-' + id);
+  const d = D[id];
+  if (!d || !drawer) return;
+  if (openId === id) { drawer.classList.remove('open'); el.classList.remove('active'); openId = null; return; }
+  if (openId) {
+    const p = document.getElementById('d-' + openId);
+    if (p) p.classList.remove('open');
+    document.querySelectorAll('.node.active').forEach(n => n.classList.remove('active'));
+  }
+  drawer.innerHTML = buildDrawer(id, d);
+  drawer.classList.add('open');
+  el.classList.add('active');
+  openId = id;
+  setTimeout(() => drawer.scrollIntoView({behavior:'smooth',block:'nearest'}), 60);
+}
+function cls(id, e) {
+  e.stopPropagation();
+  const dr = document.getElementById('d-' + id);
+  if (dr) dr.classList.remove('open');
+  document.querySelectorAll('.node.active').forEach(n => n.classList.remove('active'));
+  openId = null;
+}
+function expandAll() {
+  Object.keys(D).forEach(id => {
+    const node = document.querySelector(`[onclick="tog('${id}',this)"]`);
+    if (node && !node.classList.contains('active')) node.click();
+  });
+}
+function collapseAll() {
+  document.querySelectorAll('.drawer.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.node.active').forEach(n => n.classList.remove('active'));
+  openId = null;
+}
+</script>
+</body>
+</html>
